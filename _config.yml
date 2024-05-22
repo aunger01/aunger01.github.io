@@ -6,7 +6,7 @@ description: 欢迎来到我的个人博客
 avatarTitle: Aunger
 # 头像里面的描述
 avatarDesc: Test / UID
-url: "https://aunger.cf"
+url: "https://L1N2.com"
 
 # 博客是否自动生成目录，false为不生成
 enableToc: true
@@ -14,9 +14,9 @@ enableToc: true
 # Comment
 comment:
     # livere: MTAyMC81MDk5NC8yNzQ3Ng  # https://www.livere.com
-    livere: MTAyMC81NzQ1Mi8zMzkxNg==
-    disqus: Aunger
-    # uyan: 2143225  # 有言id,登录有言官网申请
+    # livere: MTAyMC81NzQ1Mi8zMzkxNg==
+    # disqus: Aunger
+    # uyan: 2143225  # 有言id,登录有言官网申请，有广告关了
 
 # Social
 social:
@@ -26,7 +26,7 @@ social:
     # juejin: aunger
     jianshu: d36aca9e76eb
     # twitter: 
-    mail: vip@aunger.ml
+    mail: vip@L1N2.com
 
 
 # 百度统计 
@@ -37,7 +37,7 @@ baidu:
 # Google Analytics
 # 使用博客模板请去掉或者更换 id
 # ga:
-#   id: UA-84134159-3  
+#   id: 输入Google analytics ID 
 #   host: auto  
 
 
