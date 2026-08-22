@@ -3,31 +3,17 @@ layout: page
 title: 关于我 
 ---
 
-一个工作6年的 iOS SDK 开发者，在一家游戏公司做SDK开发和维护。
+欢迎来到我的个人博客。
 
-除了iOS技术，我还一直维护着这个博客，懂一些前端的基础知识。
+我是安杰，喜欢折腾各种技术，平时会在这里记录一些技术笔记和实践心得，比如 Docker、Linux 运维等。
 
-平时喜欢用python写一些工具，能用工具做的事情坚决不用人工去操作。
+* GitHub：[@aunger01](https://github.com/aunger01)
+* 博客：[10000101.xyz](https://10000101.xyz)
 
-<h2> 我们的博客 </h2>  
+<h2> 关于本站 </h2>
 
-这个博客是我们大家的，目前已经有很大一部分人在使用我的博客模板了，我也很高兴大家使用我的模板。
+本站基于 Jekyll 搭建，托管在 GitHub Pages 上，使用 [leopardpan](https://github.com/leopardpan/leopardpan.github.io) 的博客主题（感谢原作者的开源分享）。
 
-如果你想搭建一个跟我一样的博客，可以看我的 
-<a href="/2016/10/jekyll_tutorials1/"> Jekyll 搭建个人博客 </a>
-教程
-
-
-有关于博客主题的建议和意见都可以提给我，让我们一起来打造一个精美的主题吧~ 
-
-博客源码在 <a target="_blank" href='https://github.com/leopardpan/leopardpan.github.io/'>Github</a> 上，你的 Star 是我更新的动力，谢谢~
-
-
-<h3> 搭建博客遇到了问题解法方法 </h3>  
-
-查看 [技术支持](http://leopardpan.cn/support/) 需求帮助
-
-博客模板会一直持续更新，请持续关注我，谢谢~
+如果本站的文章对你有帮助，欢迎[支持博主](/support/)~
 
 {% include comments.html %}
-
