@@ -1,15 +1,14 @@
 ---
 layout: post
-title: Docker 清理缓存
-date: 2022-10-09
-tags: 服务器技巧
+title: "Docker 清理缓存"
+date: 2022-10-09 00:00:00 +0800
+tags: ["服务器技巧"]
 ---
 
+<!-- rin-sync-managed -->
 # Docker 清理缓存、日志、无用的镜像
 
-[目录]
 
-[TOC]
 
 ------------
 ## 方法一
