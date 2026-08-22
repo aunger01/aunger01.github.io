@@ -49,7 +49,7 @@ jobs:
 
       - name: Commit and push if changed
         env:
-          SYNC_GH_TOKEN: ${{ secrets.SYNC_GH_TOKEN }}
+          SYNC_GH_TOKEN: ${{ github.token }}
         run: |
           git config user.name "Aunger (Rin Sync)"
           git config user.email "aunger01@users.noreply.github.com"
