@@ -1441,3 +1441,56 @@ nav a {
   transform: translateY(-3px);
 }
 /*导航按钮-end*/
+
+/*阅读进度条-start*/
+#reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: #42b983;
+  z-index: 9999;
+  transition: width 0.1s ease;
+}
+/*阅读进度条-end*/
+
+/*回到顶部按钮-start*/
+#back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 36px;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(66, 185, 131, 0.9);
+  color: #fff;
+  font-size: 18px;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+#back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#back-to-top:hover {
+  background: rgba(52, 152, 119, 1);
+}
+
+@media (max-width: 768px) {
+  #back-to-top {
+    right: 14px;
+    bottom: 24px;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+  }
+}
+/*回到顶部按钮-end*/

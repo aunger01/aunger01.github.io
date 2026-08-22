@@ -29,5 +29,27 @@ $(document).ready(function() {
   $('.btn-mobile-menu__icon').click(function() {
     // 导航按钮被点击
     // this.style.backgroundColor = '#fff'; 设置颜色后会自动消失
-  });  
+  });
+
+  // 阅读进度条 + 回到顶部按钮
+  var progressBar = $('#reading-progress');
+  var backToTop = $('#back-to-top');
+
+  $(window).on('scroll', function() {
+    var scrollTop = $(window).scrollTop();
+    var docHeight = $(document).height() - $(window).height();
+    var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.css('width', progress + '%');
+
+    if (scrollTop > 400) {
+      backToTop.addClass('show');
+    } else {
+      backToTop.removeClass('show');
+    }
+  });
+
+  backToTop.on('click', function() {
+    $('html, body').animate({scrollTop: 0}, 300);
+    return false;
+  });
 });
