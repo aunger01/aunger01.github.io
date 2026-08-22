@@ -3,6 +3,7 @@ layout: post
 title: "Docker 清理缓存"
 date: 2022-10-09 00:00:00 +0800
 tags: ["服务器技巧"]
+canonical: https://aunger.eu.org/feed/docker-clean-cache
 ---
 
 <!-- rin-sync-managed -->

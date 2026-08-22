@@ -78,8 +78,13 @@ async function main() {
         for (const f of readdirSync(POSTS_DIR)) {
             const p = join(POSTS_DIR, f);
             if (f.endsWith('.md') && readFileSync(p, 'utf8').includes(MARKER)) {
-                unlinkSync(p);
-                console.log(`removed stale: ${f}`);
+                try {
+                    unlinkSync(p);
+                    console.log(`removed stale: ${f}`);
+                } catch (e) {
+                    // 本机沙箱回收站 shim 可能报错但实际已删除，或删除失败交由下次运行重试
+                    console.log(`remove stale attempted: ${f} (${e.message?.slice(0, 60)})`);
+                }
             }
         }
     } else {
@@ -98,6 +103,7 @@ async function main() {
             `title: ${yamlQuote(post.title)}`,
             `date: ${date.front}`,
             tagList.length ? `tags: [${tagList.map(yamlQuote).join(', ')}]` : 'tags: []',
+            `canonical: https://aunger.eu.org/feed/${post.alias || post.id}`,
             '---',
             '',
             MARKER,

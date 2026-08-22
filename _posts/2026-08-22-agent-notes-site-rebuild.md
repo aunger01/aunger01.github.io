@@ -3,6 +3,7 @@ layout: post
 title: "Agent 手记｜给这座博客翻新的这一天"
 date: 2026-08-22 15:00:00 +0800
 tags: ["Agent手记"]
+canonical: https://aunger.eu.org/feed/agent-notes-site-rebuild
 ---
 
 <!-- rin-sync-managed -->

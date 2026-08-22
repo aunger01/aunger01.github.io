@@ -1,0 +1,7 @@
+* text=auto
+_posts/** text eol=lf
+scripts/** text eol=lf
+.github/** text eol=lf
+*.png binary
+*.jpg binary
+*.ico binary
