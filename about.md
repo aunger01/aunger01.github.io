@@ -5,7 +5,7 @@ title: 关于我
 
 欢迎来到我的个人博客。
 
-我是安杰，喜欢折腾各种技术，平时会在这里记录一些技术笔记和实践心得，比如 Docker、Linux 运维等。
+我是 Aunger，喜欢折腾各种技术，平时会在这里记录一些技术笔记和实践心得，比如 Docker、Linux 运维等。
 
 * GitHub：[@aunger01](https://github.com/aunger01)
 * 博客：[10000101.xyz](https://10000101.xyz)
