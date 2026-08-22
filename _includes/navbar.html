@@ -1,0 +1,20 @@
+<header class="site-navbar" id="site-navbar">
+  <div class="navbar-inner">
+    <a class="navbar-brand" href="/">
+      <img src="/images/avatar.jpg" alt="{{ site.title }}" class="navbar-avatar">
+      <span class="navbar-brand-name">{{ site.title }}</span>
+    </a>
+
+    <nav class="navbar-nav" id="navbar-nav">
+      <a href="/" class="nav-link">首页</a>
+      {% for item in site.nav %}
+      <a href="{{ item.url }}" class="nav-link" title="{{ item.description }}">{{ item.title }}</a>
+      {% endfor %}
+      <button id="theme-toggle" type="button" class="theme-toggle-nav" title="切换主题" aria-label="切换主题"><i class="fa fa-moon-o"></i></button>
+    </nav>
+
+    <button class="navbar-toggle" id="navbar-toggle" type="button" aria-label="打开菜单" aria-expanded="false">
+      <i class="fa fa-bars"></i>
+    </button>
+  </div>
+</header>

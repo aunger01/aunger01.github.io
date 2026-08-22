@@ -5,41 +5,22 @@
 
   <body>
 
-    <span class="mobile btn-mobile-menu">        
-      <div class="nav_container">
-         <nav class="nav-menu-item" style = "float:right">
-            <i class="nav-menu-item">
-              <a href="/#blog" title="{{site.blog_button.description}}" class="blog-button">  {{site.blog_button.title}}
-              </a>
-            </i>
-            {% for item in site.nav %}
-                <i class="nav-menu-item">
+    {% include navbar.html %}
 
-                  <a href="{{item.url}}" title="{{item.description}}" class="btn-mobile-menu__icon">
-                      {{item.title}}
-                  </a>
-                </i>
-            {% endfor %}
-          </nav>
-      </div>
-    </span>
-    
-    {% include side-panel.html %}
-
-    <div class="content-wrapper">
-        <div class="content-wrapper__inner">
-            {{ content }}
-            {% include footer.html %}
-        </div>
-    </div>
-    
     <div id="reading-progress"></div>
-    <button id="theme-toggle" type="button" title="切换主题" aria-label="切换主题"><i class="fa fa-moon-o"></i></button>
+
+    <main class="site-main">
+      <div class="container">
+        {{ content }}
+        {% include footer.html %}
+      </div>
+    </main>
+
     <a href="javascript:void(0)" id="back-to-top" title="回到顶部"><i class="fa fa-arrow-up"></i></a>
     <div id="lightbox-mask" class="lightbox-mask" role="dialog" aria-hidden="true"></div>
 
     {% include external.html %}
-    
+
   </body>
 
 </html>

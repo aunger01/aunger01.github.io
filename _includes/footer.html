@@ -1,103 +1,24 @@
-<section class="footer">
-    <footer>
-        <div class = "footer_div">  
-        <nav class="cover-navigation navigation--social">
-          <ul class="navigation">
+<footer class="site-footer">
+  <div class="footer-social">
+    {% if site.social.github %}
+    <a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fa fa-github"></i></a>
+    {% endif %}
+    {% if site.social.weibo %}
+    <a href="http://weibo.com/{{ site.social.weibo }}" target="_blank" rel="noopener noreferrer" title="微博"><i class="fa fa-weibo"></i></a>
+    {% endif %}
+    {% if site.social.jianshu %}
+    <a href="https://www.jianshu.com/u/{{ site.social.jianshu }}" target="_blank" rel="noopener noreferrer" title="简书"><i class="fa fa-book"></i></a>
+    {% endif %}
+    {% if site.social.mail %}
+    <a href="mailto:{{ site.social.mail }}" title="邮箱"><i class="fa fa-envelope"></i></a>
+    {% endif %}
+    <a href="/feed.xml" target="_blank" rel="noopener noreferrer" title="RSS"><i class="fa fa-rss"></i></a>
+  </div>
 
-          {% if site.social.github %}
-          <!-- Github -->
-          <li class="navigation__item_social">
-            <a href="https://github.com/{{site.social.github}}" title="@{{site.social.github}} 的 Github" target="_blank">
-              <div class="footer-social-icon" style="background:url(/images/github.png);"></div>
-            </a>
-          </li>
-          {% endif %}
-
-          {% if site.social.zhihu %}
-          <!-- Zhihu -->
-          <li class="navigation__item_social">
-            <a href="https://www.zhihu.com/people/{{site.social.zhihu}}" title="@{{site.social.zhihu}}" target="_blank">
-              <div class="footer-social-icon" style="background:url(/images/zhihu.png);"></div>
-            </a>
-          </li>
-
-          {% endif %}
-
-          {% if site.social.juejin %}
-          <!-- Zhihu -->
-          <li class="navigation__item_social">
-            <a href="https://juejin.im/user/{{site.social.juejin}}" title="@{{site.social.juejin}}" target="_blank">
-              <div class="footer-social-icon" style="background:url(/images/juejin.png);"></div>
-            </a>
-          </li>
-
-          {% endif %}
-
-          {% if site.social.jianshu %}
-          <!-- Zhihu -->
-          <li class="navigation__item_social">
-            <a href="https://www.jianshu.com/u/{{site.social.jianshu}}" title="@{{site.social.jianshu}}" target="_blank">
-              <div class="footer-social-icon" style="background:url(/images/jianshu.png);"></div>
-            </a>
-          </li>
-
-          {% endif %}
-
-          {% if site.social.weibo %}
-          <!-- Weibo -->
-          <li class="navigation__item_social">
-            <a href="http://weibo.com/{{site.social.weibo}}" title="@{{site.social.weibo}} 的微博" target="_blank">
-              <div class="footer-social-icon" style="background:url(/images/weibo.png);"></div>
-            </a>
-          </li>
-          {% endif %}
-
-          
-          {% if site.social.twitter %}
-          <!-- Twitter -->
-          <li class="navigation__item_social">
-            <a href="http://twitter.com/{{site.social.twitter}}" title="@{{site.social.twitter}}" target="_blank">
-              <div class="footer-social-icon" style="background:url(/images/twitter.png);"></div>
-            </a>
-          </li>
-          {% endif %}
-
-
-          {% if site.social.mail %}
-          <!-- Email -->
-          <li class="navigation__item_social">
-            <a href="mailto:{{site.social.mail}}" title="Contact me">
-              <div class="footer-social-icon" style="background:url(/images/email.png);"></div>
-            </a>
-          </li>
-          {% endif %}
-          
-          <!-- RSS -->
-          <li class="navigation__item_social">
-            <a href="/feed.xml" rel="author" title="RSS" target="_blank">
-              <div class="footer-social-icon" style="background:url(/images/rss.png);"></div>
-              <span class="label">RSS</span>
-            </a>
-          </li>
-
-          </ul>
-        </nav>
-
-        </div>
-
-        <div class = "footer_div">  
-           <p class="copyright text-muted">
-            Copyright &copy; {{ site.title }} {{ site.time | date: '%Y' }} Theme by <a href="http://leopardpan.cn/">leopardpan</a>
-            </p>
-        	<div align="right">
-
-          <!-- 访问统计 -->
-          <span id="busuanzi_container_site_pv">
-            本站总访问量
-            <span id="busuanzi_value_site_pv"></span>次
-          </span>
-
-        </div>
-        <div>
-    </footer>
-</section>
+  <p class="footer-copy">
+    &copy; {{ site.time | date: '%Y' }} {{ site.title }} · Powered by <a href="https://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> · Theme <a href="http://leopardpan.cn/" target="_blank" rel="noopener noreferrer">leopardpan</a> · 重构 by 安杰
+  </p>
+  <p class="footer-pv" id="busuanzi_container_site_pv">
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+  </p>
+</footer>

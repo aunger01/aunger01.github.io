@@ -1,55 +1,53 @@
-$(document).ready(function() {
+/* 导航栏交互、阅读进度条、回到顶部 */
+(function() {
+  'use strict';
 
+  document.addEventListener('DOMContentLoaded', function() {
 
-  $('a.blog-button').click(function() {
-    // If already in blog, return early without animate overlay panel again.
-    if (location.hash && location.hash == "#blog") return;
-    if ($('.panel-cover').hasClass('panel-cover--collapsed')) return;
-    $('.main-post-list').removeClass('hidden');
-    currentWidth = $('.panel-cover').width();
-    if (currentWidth < 2000) {
-      $('.panel-cover').addClass('panel-cover--collapsed');
-    } else {
-      $('.panel-cover').css('max-width',currentWidth);
-      $('.panel-cover').animate({'max-width': '320px', 'width': '22%'}, 400, swing = 'swing', function() {} );
+    // ============================== 移动端汉堡菜单 ==============================
+    var toggleBtn = document.getElementById('navbar-toggle');
+    var nav = document.getElementById('navbar-nav');
+    if (toggleBtn && nav) {
+      toggleBtn.addEventListener('click', function() {
+        var open = nav.classList.toggle('open');
+        toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggleBtn.innerHTML = open ? '<i class="fa fa-times"></i>' : '<i class="fa fa-bars"></i>';
+      });
     }
 
-    
-  });
+    // ============================== 当前页导航高亮 ==============================
+    var path = location.pathname.replace(/\/index\.html$/, '/');
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(function(a) {
+      var href = a.getAttribute('href');
+      if (!href) return;
+      var linkPath = href.replace(/\/index\.html$/, '/');
+      if (linkPath === '/' ? path === '/' : path.indexOf(linkPath) === 0) {
+        a.classList.add('active');
+      }
+    });
 
-  if (window.location.hash && window.location.hash == "#blog") {
-    $('.panel-cover').addClass('panel-cover--collapsed');
-    $('.main-post-list').removeClass('hidden');
-  }
+    // ============================== 阅读进度条 + 回到顶部 ==============================
+    var progressBar = document.getElementById('reading-progress');
+    var backToTop = document.getElementById('back-to-top');
 
-  if (window.location.pathname.substring(0, 5) == "/tag/") {
-    $('.panel-cover').addClass('panel-cover--collapsed');
-  }
+    function onScroll() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      if (progressBar) progressBar.style.width = progress + '%';
+      if (backToTop) {
+        if (scrollTop > 400) backToTop.classList.add('show');
+        else backToTop.classList.remove('show');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
-  $('.btn-mobile-menu__icon').click(function() {
-    // 导航按钮被点击
-    // this.style.backgroundColor = '#fff'; 设置颜色后会自动消失
-  });
-
-  // 阅读进度条 + 回到顶部按钮
-  var progressBar = $('#reading-progress');
-  var backToTop = $('#back-to-top');
-
-  $(window).on('scroll', function() {
-    var scrollTop = $(window).scrollTop();
-    var docHeight = $(document).height() - $(window).height();
-    var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.css('width', progress + '%');
-
-    if (scrollTop > 400) {
-      backToTop.addClass('show');
-    } else {
-      backToTop.removeClass('show');
+    if (backToTop) {
+      backToTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return false;
+      });
     }
   });
-
-  backToTop.on('click', function() {
-    $('html, body').animate({scrollTop: 0}, 300);
-    return false;
-  });
-});
+})();
