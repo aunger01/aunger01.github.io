@@ -2140,3 +2140,31 @@ html.theme-dark .page-content h3 { background: none; box-shadow: none; }
   .post-card { padding: 18px 16px; }
   .post-title { font-size: 1.45em; }
 }
+
+/* ===== Moments 动态页 ===== */
+.moments-list { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; }
+.moment-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 22px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+.moment-meta {
+  font-size: 0.85em;
+  color: var(--text-soft, #888);
+  margin-bottom: 8px;
+}
+.moment-content { line-height: 1.75; color: var(--text); }
+.moment-content p { margin: 0 0 0.6em; }
+.moment-content p:last-child { margin-bottom: 0; }
+.moment-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 8px 0;
+  display: block;
+}
+@media (max-width: 768px) {
+  .moment-card { padding: 16px; }
+}

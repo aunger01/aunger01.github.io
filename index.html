@@ -28,7 +28,8 @@ layout: default
 </section>
 
 <section class="post-cards">
-  {% for post in paginator.posts %}
+  {% assign visible_posts = site.posts | where_exp: "post", "post.hidden != true" %}
+  {% for post in visible_posts %}
   <article class="post-card">
     <div class="post-card-meta">
       <time datetime="{{ post.date | date: date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
@@ -44,5 +45,3 @@ layout: default
   </article>
   {% endfor %}
 </section>
-
-{% include pagination.html %}

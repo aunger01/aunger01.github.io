@@ -68,13 +68,10 @@ blog_button:
 nav:
     - {title: 所有文章, description: archive, url: '/archive'}   
     - {title: 标签, description: tags, url: '/tags'}      
-    - {title: 支持博主, description: support, url: '/support'}      
-    - {title: 关于我, description: about, url: '/about'}   
-    
+    - {title: 动态, description: moments, url: '/moments'}
+    - {title: 关于我, description: about, url: '/about'}
 
-# Pagination
-plugins: [jekyll-paginate,jekyll-sitemap]
-paginate: 20
-paginate_path: "page/:num/"
+
+plugins: [jekyll-sitemap]
 
 

@@ -1,0 +1,24 @@
+---
+layout: page
+title: 动态
+header: 碎碎念与日常
+group: navigation
+---
+{% include JB/setup %}
+
+<div class="moments-list">
+  {% for m in site.data.rin-moments %}
+  <article class="moment-card">
+    <div class="moment-meta">
+      <time datetime="{{ m.created_at | date_to_xmlschema }}">{{ m.created_at | date: "%Y-%m-%d %H:%M" }}</time>
+    </div>
+    <div class="moment-content">
+      {{ m.content | markdownify }}
+    </div>
+  </article>
+  {% else %}
+  <article class="moment-card">
+    <div class="moment-content"><p>还没有动态～</p></div>
+  </article>
+  {% endfor %}
+</div>

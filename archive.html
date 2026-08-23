@@ -6,7 +6,7 @@ group: navigation
 ---
 {% include JB/setup %}
 
-{% assign posts_collate = site.posts %}
+{% assign posts_collate = site.posts | where_exp: "post", "post.hidden != true" %}
 <div class="page card">
 {% include JB/posts_collate %}
 </div>
