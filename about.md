@@ -14,6 +14,6 @@ title: 关于我
 
 本站基于 Jekyll 搭建，托管在 GitHub Pages 上，使用 [leopardpan](https://github.com/leopardpan/leopardpan.github.io) 的博客主题（感谢原作者的开源分享）。
 
-如果本站的文章对你有帮助，欢迎[支持博主](/support/)~
+如果本站的文章对你有帮助，欢迎在文章底部点个赞~
 
 {% include comments.html %}
