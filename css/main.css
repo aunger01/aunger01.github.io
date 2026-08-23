@@ -2010,7 +2010,7 @@ html.theme-dark .page-content h3 { background: none; box-shadow: none; }
   border-radius: 10px;
 }
 
-/* ---------- 上一篇 / 下一篇（打赏区块中的 pager） ---------- */
+/* ---------- 上一篇 / 下一篇（文章底部 pager） ---------- */
 .pager { list-style: none; margin: 30px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .pager li { width: 100%; margin: 0; }
 .pager li > a {
@@ -2167,4 +2167,53 @@ html.theme-dark .page-content h3 { background: none; box-shadow: none; }
 }
 @media (max-width: 768px) {
   .moment-card { padding: 16px; }
+}
+
+/* ===== 文章点赞按钮 ===== */
+.like-box { text-align: center; margin: 34px 0 6px; position: relative; }
+.like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 26px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-soft);
+  color: var(--text);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color .25s ease, background .25s ease, transform .15s ease;
+}
+.like-btn:hover { border-color: var(--link); }
+.like-btn:active { transform: scale(.94); }
+.like-heart {
+  color: #E74851;
+  font-size: 20px;
+  line-height: 1;
+  display: inline-block;
+}
+.like-heart.pop { animation: likePop .45s ease; }
+@keyframes likePop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.55); }
+  100% { transform: scale(1); }
+}
+.like-sep { width: 1px; height: 16px; background: var(--border); }
+.like-count { color: var(--link); font-variant-numeric: tabular-nums; }
+.like-tip { margin: 10px 0 0; font-size: 13px; color: var(--text-soft); }
+.like-float {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  color: #E74851;
+  font-size: 18px;
+  pointer-events: none;
+  animation: likeFloat .9s ease-out forwards;
+}
+@keyframes likeFloat {
+  0%   { opacity: 1; transform: translate(-50%, 0) scale(.7); }
+  100% { opacity: 0; transform: translate(-50%, -70px) scale(1.4); }
 }
