@@ -6,7 +6,7 @@
 // 可见性映射（与主站一致）：
 //   listed=1 draft=0  公开文章  → 正常展示（首页/标签/RSS/归档）
 //   listed=0 draft=0  unlisted  → front matter hidden:true + sitemap:false，首页/归档/RSS 不显，标签页可见
-//   draft=1           私密      → 同上，并自动追加 private 标签（占位名，圣上定名后全局替换）
+//   draft=1           私密      → 同上，并自动追加「深海幽域」标签（圣上 2026-08-23 定名）
 
 import { readFileSync, writeFileSync, readdirSync, unlinkSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
@@ -16,7 +16,7 @@ const DATA_DIR = join(process.cwd(), '_data');
 const MOMENTS_FILE = join(DATA_DIR, 'rin-moments.json');
 const MARKER = '<!-- rin-sync-managed -->';
 const MAIN_SITE = 'https://aunger.eu.org';
-const PRIVATE_TAG = 'private'; // 占位：私密文章自动标签名，定名后全局替换
+const PRIVATE_TAG = '深海幽域'; // 私密文章自动标签名（圣上 2026-08-23 定名）
 const CF_BASE = `https://api.cloudflare.com/client/v4/accounts/${process.env.CF_ACCOUNT_ID}/d1/database/${process.env.D1_DATABASE_ID}/query`;
 
 async function d1Query(sql) {
