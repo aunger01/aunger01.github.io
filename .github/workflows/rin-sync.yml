@@ -32,13 +32,18 @@ jobs:
           D1_DATABASE_ID: ${{ secrets.D1_DATABASE_ID }}
         run: node scripts/rin-sync.mjs
 
-      - name: Export full D1 backup
+      # 白名单导出：仅内容表，排除 cache（站内配置含 webhook/api_key 明文）与 users（password/openid）
+      # _cf_KV 为 CF 保护表，wrangler 导出时本就跳过
+      - name: Export D1 backup (content tables only)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
         run: |
           mkdir -p d1-backup
-          npx --yes wrangler@latest d1 export rin --remote --output "d1-backup/rin-$(date -u +%Y-%m-%d).sql"
+          npx --yes wrangler@latest d1 export rin --remote --output "d1-backup/rin-$(date -u +%Y-%m-%d).sql" \
+            --table feeds --table feed_hashtags --table hashtags \
+            --table comments --table moments --table friends \
+            --table info --table visit_stats --table visits
 
       - name: Upload D1 backup artifact
         uses: actions/upload-artifact@v4
