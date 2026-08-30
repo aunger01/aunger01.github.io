@@ -1,25 +1,69 @@
 ---
 layout: page
-title: 
-header: 根据快速导航到相应的文章
+title: 标签
+header: 
 group: navigation
 ---
 {% include JB/setup %}
 
-<ul class="tag_box inline">
-  {% assign tags_list = site.tags %}  
-  {% include JB/tags_list %}
-</ul>
+<div class="hashtag-page">
+  <div class="hashtag-toolbar">
+    <p class="hashtag-total">共 {{ site.tags.size }} 个标签</p>
+    <div class="hashtag-sort">
+      <button type="button" class="hashtag-sort-btn active" data-sort="latest">最新</button>
+      <span class="hashtag-sort-sep">|</span>
+      <button type="button" class="hashtag-sort-btn" data-sort="popular">热门</button>
+    </div>
+  </div>
 
-<div class = "card">
-{% for tag in site.tags %} 
-
-  <h3 id="{{ tag[0] }}-ref">{{ tag[0] }}</h3>
-  <ul>
-    {% assign pages_list = tag[1] %}  
-    {% include JB/pages_list %}
-  </ul>
-
-
-{% endfor %}
+  <div class="hashtag-list" id="hashtag-list">
+    {% for tag in site.tags %}
+    {% assign latest_post = tag[1] | sort: "date" | last %}
+    <details class="hashtag-item" id="{{ tag[0] }}-ref" data-count="{{ tag[1].size }}" data-latest="{{ latest_post.date | date: '%s' }}">
+      <summary class="hashtag-row">
+        <span class="hashtag-name"># {{ tag[0] }}</span>
+        <span class="hashtag-count">{{ tag[1].size }} 篇</span>
+      </summary>
+      <ul class="hashtag-posts">
+        {% assign pages_list = tag[1] %}
+        {% include JB/pages_list %}
+      </ul>
+    </details>
+    {% endfor %}
+  </div>
 </div>
+
+<script>
+(function () {
+  var list = document.getElementById('hashtag-list');
+  if (!list) return;
+  var items = Array.prototype.slice.call(list.querySelectorAll('.hashtag-item'));
+  var byLatest = items.slice().sort(function (a, b) {
+    return (parseInt(b.getAttribute('data-latest'), 10) || 0) - (parseInt(a.getAttribute('data-latest'), 10) || 0);
+  });
+  var byPopular = items.slice().sort(function (a, b) {
+    var ca = parseInt(b.getAttribute('data-count'), 10) || 0;
+    var cb = parseInt(a.getAttribute('data-count'), 10) || 0;
+    if (ca !== cb) return ca - cb;
+    return (parseInt(b.getAttribute('data-latest'), 10) || 0) - (parseInt(a.getAttribute('data-latest'), 10) || 0);
+  });
+  function render(arr) { arr.forEach(function (it) { list.appendChild(it); }); }
+  render(byLatest);
+  var hash = decodeURIComponent(window.location.hash || '');
+  if (hash.indexOf('-ref') > -1) {
+    var target = document.getElementById(hash.slice(1));
+    if (target) {
+      target.open = true;
+      setTimeout(function () { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
+    }
+  }
+  var btns = document.querySelectorAll('.hashtag-sort-btn');
+  Array.prototype.forEach.call(btns, function (btn) {
+    btn.addEventListener('click', function () {
+      Array.prototype.forEach.call(btns, function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      render(btn.getAttribute('data-sort') === 'popular' ? byPopular : byLatest);
+    });
+  });
+})();
+</script>
