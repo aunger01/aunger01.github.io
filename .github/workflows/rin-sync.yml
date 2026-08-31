@@ -1,9 +1,10 @@
 name: Rin Sync
 
-# 每周一 12:00 (北京时间) 从 Rin 主站 D1 同步文章到本备份站
+# 每周一 12:00 (北京时间) 从 Rin 主站 D1 同步文章到本备份站--因拥堵导致自动化失效故又在下方进行调整
 on:
+  # 每周一 14:17 (北京时间) 从 Rin 主站 D1 同步文章到本备份站（避开整点拥堵）
   schedule:
-    - cron: '0 4 * * 1'
+    - cron: '17 6 * * 1'
   workflow_dispatch:
 
 permissions:
