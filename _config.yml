@@ -54,6 +54,10 @@ permalink: /:year/:month/:title/
 # Format
 highlighter: rouge
 
+# 分页：首页每页 5 篇（jekyll-paginate 自动跳过 hidden 文章，issue #1）
+paginate: 5
+paginate_path: "/page:num/"
+
 textColor: #FF0000
 
 # supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
@@ -71,6 +75,6 @@ nav:
     - {title: 关于我, description: about, url: '/about'}
 
 
-plugins: [jekyll-sitemap]
+plugins: [jekyll-sitemap, jekyll-paginate]
 
 

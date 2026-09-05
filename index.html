@@ -12,8 +12,7 @@ layout: default
 </section>
 
 <section class="post-cards">
-  {% assign visible_posts = site.posts | where_exp: "post", "post.hidden != true" %}
-  {% for post in visible_posts %}
+  {% for post in paginator.posts %}
   <article class="post-card">
     <div class="post-card-meta">
       <time datetime="{{ post.date | date: date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
@@ -29,3 +28,15 @@ layout: default
   </article>
   {% endfor %}
 </section>
+
+{% if paginator.total_pages > 1 %}
+<nav class="pagination" aria-label="分页">
+  {% if paginator.previous_page %}
+  <a class="page-btn" href="{{ paginator.previous_page_path | relative_url }}">‹ 上一页</a>
+  {% endif %}
+  <span class="page-number">第 {{ paginator.page }} / {{ paginator.total_pages }} 页</span>
+  {% if paginator.next_page %}
+  <a class="page-btn" href="{{ paginator.next_page_path | relative_url }}">下一页 ›</a>
+  {% endif %}
+</nav>
+{% endif %}
