@@ -17,6 +17,7 @@ comment:
     # livere: MTAyMC81NzQ1Mi8zMzkxNg==
     # disqus: Aunger
     # uyan: 2143225  # 有言id,登录有言官网申请，有广告关了
+    utterances: aunger01/aunger01.github.io  # utteranc.es 评论（基于仓库 GitHub Issues，issue #2）
 
 # Social
 social:

@@ -35,7 +35,18 @@
         })();
     </script>
     <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
-    
+
+  {% elsif site.comment.utterances %}
+    <!-- utteranc.es: 基于 GitHub Issues 的评论组件 https://utteranc.es -->
+    <script src="https://utteranc.es/client.js"
+            repo="{{ site.comment.utterances }}"
+            issue-term="pathname"
+            label="comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
   {% endif %}
 
 </section>
