@@ -161,7 +161,7 @@
 
     ta.addEventListener('input', function () {
       cnt.textContent = ta.value.length;
-      btn.disabled = ta.value.length === 0 || ta.value.length > 1000;
+      btn.disabled = ta.value.length === 0 || ta.value.length >= 1000;
     });
 
     form.addEventListener('submit', function (e) {
