@@ -452,6 +452,144 @@ img::-moz-selection {
     border-top: 1px solid #DDDDDD;
     padding: 60px 0; }
 
+  /* Rin 评论组件样式 (issue #3) */
+  .rin-section-title {
+    font-size: 1.15rem;
+    margin: 0 0 18px;
+    padding: 0;
+    color: inherit;
+    font-weight: 600;
+  }
+  .rin-section-title-list { margin-top: 40px; }
+  .rin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .rin-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  .rin-form input,
+  .rin-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #DDDDDD;
+    border-radius: 6px;
+    font: inherit;
+    color: inherit;
+    background: rgba(255,255,255,0.4);
+    transition: border-color 0.15s;
+  }
+  .rin-form input:focus,
+  .rin-form textarea:focus {
+    outline: none;
+    border-color: #707070;
+  }
+  .rin-form textarea {
+    min-height: 100px;
+    resize: vertical;
+    font-family: inherit;
+  }
+  .rin-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .rin-counter {
+    font-size: 0.85em;
+    opacity: 0.6;
+    font-variant-numeric: tabular-nums;
+  }
+  #rin-submit {
+    padding: 8px 20px;
+    border: 1px solid currentColor;
+    border-radius: 6px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    transition: background 0.15s, opacity 0.15s;
+  }
+  #rin-submit:hover:not(:disabled) {
+    background: rgba(127,127,127,0.15);
+  }
+  #rin-submit:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .rin-msg { margin: 0; min-height: 1.2em; font-size: 0.9em; }
+  .rin-msg-ok { color: #2a8f4a; }
+  .rin-msg-error { color: #c0392b; }
+  .rin-msg-warn { color: #b8860b; }
+  .rin-empty {
+    margin: 8px 0 24px;
+    opacity: 0.6;
+    font-size: 0.95em;
+  }
+  .rin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 8px;
+  }
+  .rin-item {
+    padding: 14px 16px;
+    border: 1px solid rgba(127,127,127,0.25);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.03);
+  }
+  .rin-item-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .rin-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .rin-avatar-fallback {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #707070;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85em;
+  }
+  .rin-name {
+    font-weight: 600;
+    font-size: 0.95em;
+  }
+  .rin-ext {
+    font-size: 0.85em;
+    opacity: 0.6;
+    text-decoration: none;
+  }
+  .rin-time {
+    margin-left: auto;
+    font-size: 0.8em;
+    opacity: 0.55;
+    font-variant-numeric: tabular-nums;
+  }
+  .rin-item-body {
+    line-height: 1.65;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  @media (max-width: 640px) {
+    .rin-row { grid-template-columns: 1fr; }
+  }
+
   .post-meta {
     margin: 0;
     color: #c7c7c7; 

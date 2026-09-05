@@ -1,52 +1,217 @@
-<section class="post-comments">
-
-  {% if site.comment.livere %}
-
-      <div id="lv-container" data-id="city" data-uid="{{site.comment.livere}}">
-      <script type="text/javascript">
-         (function(d, s) {
-             var j, e = d.getElementsByTagName(s)[0];
-
-             if (typeof LivereTower === 'function') { return; }
-             j = d.createElement(s);
-             j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-             j.async = true;
-             e.parentNode.insertBefore(j, e);
-         })(document, 'script');
-      </script>
-      <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-      </div>
-
-  {% elsif site.comment.disqus %}
-    <div id="disqus_thread"></div>
-    <script>
-    
-    var disqus_config = function () {
-        this.page.url = "{{ page.url | prepend: site.baseurl | prepend: site.url }}";
-        this.page.identifier = "{{ page.url }}";
-    };
-    var disqus_shortname = '{{ site.comment.disqus }}';
-    
-    (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
-
-  {% elsif site.comment.utterances %}
-    <!-- utteranc.es: 基于 GitHub Issues 的评论组件 https://utteranc.es -->
-    <script src="https://utteranc.es/client.js"
-            repo="{{ site.comment.utterances }}"
-            issue-term="pathname"
-            label="comment"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-    </script>
-
-  {% endif %}
-
+<!--
+  备份站评论区 (issue #3 / D 方案)
+  - 直接调主站 Rin 公开 comment API，零密钥、零 token、零密钥泄露
+  - 数据进主站 D1 comments 表，主站文章页同步显示
+  - 游客匿名评论（仅昵称必填）；不暴露 GitHub 用户名
+  - 前端限流：60 秒 1 条、内容最多 1000 字
+-->
+<section class="post-comments" id="rin-comments"
+         data-rin-api="{{ site.comment.rin.api | default: 'https://aunger.eu.org/api' }}">
+  <h3 class="rin-section-title">发表评论</h3>
+  <noscript><p class="rin-empty">评论功能需要启用 JavaScript。</p></noscript>
 </section>
+
+<script>
+(function () {
+  'use strict';
+  var ROOT = document.getElementById('rin-comments');
+  if (!ROOT) return;
+  var API = ROOT.getAttribute('data-rin-api');
+
+  // 从 /YYYY/MM/slug/ 取 slug；about 等特殊页 slug 为 'about'
+  function getSlug() {
+    var m = (location.pathname || '/').match(/\/(\d{4}\/\d{2}\/[^/]+)/);
+    if (m) return m[1].split('/').pop();
+    var last = (location.pathname || '/').replace(/\/+$/, '').split('/').pop();
+    return last || '';
+  }
+  var SLUG = getSlug();
+
+  // XSS 转义
+  function esc(s) {
+    if (s == null) return '';
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+    });
+  }
+
+  // slug → feedId 映射（localStorage 缓存 10 分钟）
+  var MAP_KEY = 'rin_feed_map_v1';
+  var MAP_TTL = 10 * 60 * 1000;
+  function getFeedId(slug) {
+    var cached = null;
+    try {
+      var raw = localStorage.getItem(MAP_KEY);
+      if (raw) {
+        var p = JSON.parse(raw);
+        if (Date.now() - p.ts < MAP_TTL && p.map) cached = p.map;
+      }
+    } catch (e) {}
+    if (cached && Object.prototype.hasOwnProperty.call(cached, slug)) {
+      return Promise.resolve(cached[slug]);
+    }
+    return fetch(API + '/feed?limit=500', { credentials: 'omit' })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var map = {};
+        (d.data || []).forEach(function (f) {
+          if (f.alias) map[f.alias] = f.id;
+        });
+        try { localStorage.setItem(MAP_KEY, JSON.stringify({ ts: Date.now(), map: map })); } catch (e) {}
+        return map[slug] || null;
+      })
+      .catch(function () { return null; });
+  }
+
+  // 限流（localStorage 持久化，60 秒 1 条）
+  function cooldownKey() { return 'rin_cd_' + SLUG; }
+  function cooldownState() {
+    try {
+      var last = parseInt(localStorage.getItem(cooldownKey()) || '0', 10);
+      var diff = Date.now() - last;
+      if (diff < 60000) return { locked: true, remain: Math.ceil((60000 - diff) / 1000) };
+    } catch (e) {}
+    return { locked: false, remain: 0 };
+  }
+  function setCooldown() {
+    try { localStorage.setItem(cooldownKey(), String(Date.now())); } catch (e) {}
+  }
+
+  // 渲染评论列表
+  function renderList(feedId, target) {
+    return fetch(API + '/comment/' + feedId, { credentials: 'omit' })
+      .then(function (r) { if (!r.ok) throw new Error('list'); return r.json(); })
+      .then(function (list) {
+        if (!list || !list.length) {
+          target.innerHTML = '<p class="rin-empty">暂无评论，欢迎抢沙发 ✦</p>';
+          return;
+        }
+        var html = list.map(function (c) {
+          var u = c.user;
+          var name = u ? u.username : (c.guestName || '匿名');
+          var avatarHtml = (u && u.avatar)
+            ? '<img class="rin-avatar" src="' + esc(u.avatar) + '" alt="" loading="lazy">'
+            : '<span class="rin-avatar rin-avatar-fallback">' + esc((name || '?').charAt(0).toUpperCase()) + '</span>';
+          var link = (!u && c.guestWebsite)
+            ? ' <a class="rin-ext" href="' + esc(c.guestWebsite) + '" rel="nofollow noopener" target="_blank" title="' + esc(c.guestWebsite) + '">↗</a>'
+            : '';
+          var time = new Date(c.createdAt).toLocaleString('zh-CN', { hour12: false });
+          return ''
+            + '<div class="rin-item">'
+            +   '<div class="rin-item-head">'
+            +     avatarHtml
+            +     '<span class="rin-name">' + esc(name) + link + '</span>'
+            +     '<time class="rin-time">' + esc(time) + '</time>'
+            +   '</div>'
+            +   '<div class="rin-item-body">' + esc(c.content) + '</div>'
+            + '</div>';
+        }).join('');
+        target.innerHTML = html;
+      })
+      .catch(function () {
+        target.innerHTML = '<p class="rin-empty">评论加载失败，<a href="javascript:location.reload()">刷新</a> 重试。</p>';
+      });
+  }
+
+  // 提交
+  function submit(feedId, payload) {
+    return fetch(API + '/comment/' + feedId, {
+      method: 'POST',
+      credentials: 'omit',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (r) {
+      if (r.ok) return { ok: true };
+      return r.text().then(function (t) { return { ok: false, error: t || ('HTTP ' + r.status) }; });
+    }).catch(function (e) { return { ok: false, error: e.message || '网络错误' }; });
+  }
+
+  // 主流程
+  getFeedId(SLUG).then(function (feedId) {
+    if (!feedId) {
+      ROOT.insertAdjacentHTML('beforeend',
+        '<p class="rin-empty">本文暂未关联主站，评论暂不可用。</p>');
+      return;
+    }
+
+    ROOT.insertAdjacentHTML('beforeend', ''
+      + '<form id="rin-form" class="rin-form" autocomplete="off">'
+      +   '<div class="rin-row">'
+      +     '<input name="guestName" placeholder="昵称（必填）" maxlength="50" required>'
+      +     '<input name="guestEmail" type="email" placeholder="邮箱（可选，不公开）" maxlength="100">'
+      +     '<input name="guestWebsite" type="url" placeholder="网站（可选）" maxlength="200">'
+      +   '</div>'
+      +   '<textarea name="content" id="rin-content" placeholder="说点什么…（最多 1000 字）" maxlength="1000" required></textarea>'
+      +   '<div class="rin-toolbar">'
+      +     '<span class="rin-counter"><span id="rin-count">0</span> / 1000</span>'
+      +     '<button type="submit" id="rin-submit">提交评论</button>'
+      +   '</div>'
+      +   '<p id="rin-msg" class="rin-msg" role="status"></p>'
+      + '</form>'
+      + '<h3 class="rin-section-title rin-section-title-list">评论</h3>'
+      + '<div id="rin-list" class="rin-list"><p class="rin-empty">加载中…</p></div>'
+    );
+
+    var form = document.getElementById('rin-form');
+    var ta = document.getElementById('rin-content');
+    var cnt = document.getElementById('rin-count');
+    var msg = document.getElementById('rin-msg');
+    var btn = document.getElementById('rin-submit');
+    var list = document.getElementById('rin-list');
+
+    ta.addEventListener('input', function () {
+      cnt.textContent = ta.value.length;
+      btn.disabled = ta.value.length === 0 || ta.value.length > 1000;
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      msg.textContent = '';
+      msg.className = 'rin-msg';
+
+      var payload = {
+        content: ta.value.trim(),
+        guestName: form.guestName.value.trim(),
+        guestEmail: form.guestEmail.value.trim(),
+        guestWebsite: form.guestWebsite.value.trim()
+      };
+      if (!payload.content) { msg.textContent = '评论内容不能为空'; return; }
+      if (payload.content.length > 1000) { msg.textContent = '评论内容最多 1000 字'; return; }
+      if (!payload.guestName) { msg.textContent = '请填写昵称'; return; }
+
+      var cd = cooldownState();
+      if (cd.locked) {
+        msg.textContent = '请等待 ' + cd.remain + ' 秒后再发评论';
+        msg.className = 'rin-msg rin-msg-warn';
+        return;
+      }
+
+      btn.disabled = true;
+      msg.textContent = '提交中…';
+      submit(feedId, payload).then(function (r) {
+        if (!r.ok) {
+          msg.textContent = '提交失败：' + (r.error || '未知错误');
+          msg.className = 'rin-msg rin-msg-error';
+          btn.disabled = false;
+          return;
+        }
+        setCooldown();
+        msg.textContent = '评论成功 ✦';
+        msg.className = 'rin-msg rin-msg-ok';
+        form.reset();
+        cnt.textContent = '0';
+        btn.disabled = true;
+        renderList(feedId, list);
+        // 30 秒后恢复提交按钮（叠加客户端节流）
+        setTimeout(function () {
+          btn.disabled = false;
+          msg.textContent = '';
+          msg.className = 'rin-msg';
+        }, 30000);
+      });
+    });
+
+    renderList(feedId, list);
+  });
+})();
+</script>

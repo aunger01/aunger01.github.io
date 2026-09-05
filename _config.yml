@@ -12,12 +12,14 @@ url: "https://10000101.xyz"
 enableToc: true
 
 # Comment
+# 备份站评论：直连主站 Rin 公开 comment API（issue #3 / D 方案）
+# - 零密钥：浏览器请求只带公开 URL + 评论字段
+# - 数据进主站 D1 comments 表，主站文章页同步显示
+# - 游客匿名（仅昵称必填），不暴露 GitHub 用户名
+# - 前端限流：60 秒 1 条、内容 ≤ 1000 字
 comment:
-    # livere: MTAyMC81MDk5NC8yNzQ3Ng  # https://www.livere.com
-    # livere: MTAyMC81NzQ1Mi8zMzkxNg==
-    # disqus: Aunger
-    # uyan: 2143225  # 有言id,登录有言官网申请，有广告关了
-    utterances: aunger01/aunger01.github.io  # utteranc.es 评论（基于仓库 GitHub Issues，issue #2）
+    rin:
+        api: https://aunger.eu.org/api  # Rin 主站 API 前缀
 
 # Social
 social:
