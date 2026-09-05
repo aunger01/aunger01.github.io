@@ -452,21 +452,31 @@ img::-moz-selection {
     border-top: 1px solid #DDDDDD;
     padding: 60px 0; }
 
-  /* Rin 评论组件样式 (issue #3) */
+  /* Rin 评论组件样式 (issue #3 / D 方案 + #3.2 暗色适配) */
+  /* 参考主站 Rin 视觉：圆角卡片 + 头像 + 主题色按钮，CSS vars 跟随 Jekyll 主题 */
   .rin-section-title {
-    font-size: 1.15rem;
-    margin: 0 0 18px;
+    font-size: 1.2rem;
+    margin: 0 0 14px;
     padding: 0;
     color: inherit;
     font-weight: 600;
   }
-  .rin-section-title-list { margin-top: 40px; }
+  .rin-section-title-list { margin-top: 36px; }
+
   .rin-form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 8px;
+    gap: 10px;
+    background: #fafafa;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 18px;
   }
+  html.theme-dark .rin-form {
+    background: #2a2a2a;
+    border-color: #3a3a3a;
+  }
+
   .rin-row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -476,29 +486,47 @@ img::-moz-selection {
   .rin-form textarea {
     width: 100%;
     box-sizing: border-box;
-    padding: 10px 12px;
-    border: 1px solid #DDDDDD;
-    border-radius: 6px;
+    padding: 9px 12px;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
     font: inherit;
-    color: inherit;
-    background: rgba(255,255,255,0.4);
+    color: #222;
+    background: #ffffff;
     transition: border-color 0.15s;
+  }
+  html.theme-dark .rin-form input,
+  html.theme-dark .rin-form textarea {
+    color: #e6e6e6;
+    background: #1f1f1f;
+    border-color: #444;
+  }
+  .rin-form input::placeholder,
+  .rin-form textarea::placeholder {
+    color: #999;
+    opacity: 1;
+  }
+  html.theme-dark .rin-form input::placeholder,
+  html.theme-dark .rin-form textarea::placeholder {
+    color: #888;
   }
   .rin-form input:focus,
   .rin-form textarea:focus {
     outline: none;
-    border-color: #707070;
+    border-color: #5dade2;
   }
   .rin-form textarea {
     min-height: 100px;
     resize: vertical;
     font-family: inherit;
+    line-height: 1.5;
   }
+
   .rin-toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 12px;
+    margin-top: 2px;
   }
   .rin-counter {
     font-size: 0.85em;
@@ -506,23 +534,25 @@ img::-moz-selection {
     font-variant-numeric: tabular-nums;
   }
   #rin-submit {
-    padding: 8px 20px;
-    border: 1px solid currentColor;
-    border-radius: 6px;
-    background: transparent;
-    color: inherit;
+    padding: 8px 22px;
+    border: none;
+    border-radius: 999px;
+    background: #5dade2;
+    color: #ffffff;
     font: inherit;
+    font-weight: 500;
     cursor: pointer;
     transition: background 0.15s, opacity 0.15s;
   }
   #rin-submit:hover:not(:disabled) {
-    background: rgba(127,127,127,0.15);
+    background: #4a9bd9;
   }
   #rin-submit:disabled {
     opacity: 0.4;
     cursor: not-allowed;
   }
-  .rin-msg { margin: 0; min-height: 1.2em; font-size: 0.9em; }
+
+  .rin-msg { margin: 8px 0 0; min-height: 1.2em; font-size: 0.9em; }
   .rin-msg-ok { color: #2a8f4a; }
   .rin-msg-error { color: #c0392b; }
   .rin-msg-warn { color: #b8860b; }
@@ -531,44 +561,58 @@ img::-moz-selection {
     opacity: 0.6;
     font-size: 0.95em;
   }
+
   .rin-list {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 12px;
     margin-top: 8px;
   }
   .rin-item {
-    padding: 14px 16px;
-    border: 1px solid rgba(127,127,127,0.25);
-    border-radius: 8px;
-    background: rgba(255,255,255,0.03);
-  }
-  .rin-item-head {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
+    padding: 14px 16px;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    background: #fafafa;
+  }
+  html.theme-dark .rin-item {
+    background: #2a2a2a;
+    border-color: #3a3a3a;
   }
   .rin-avatar {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
+    margin-top: 2px;
   }
   .rin-avatar-fallback {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #707070;
-    color: #fff;
+    background: #5dade2;
+    color: #ffffff;
     font-weight: 600;
-    font-size: 0.85em;
+    font-size: 0.9em;
+  }
+  .rin-item-main {
+    flex: 1;
+    min-width: 0;
+  }
+  .rin-item-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
   }
   .rin-name {
     font-weight: 600;
     font-size: 0.95em;
+    color: inherit;
   }
   .rin-ext {
     font-size: 0.85em;
@@ -582,12 +626,15 @@ img::-moz-selection {
     font-variant-numeric: tabular-nums;
   }
   .rin-item-body {
-    line-height: 1.65;
+    line-height: 1.6;
     white-space: pre-wrap;
     word-break: break-word;
+    font-size: 0.95em;
+    opacity: 0.92;
   }
   @media (max-width: 640px) {
     .rin-row { grid-template-columns: 1fr; }
+    .rin-item { padding: 12px; }
   }
 
   .post-meta {

@@ -6,7 +6,8 @@
   - 前端限流：60 秒 1 条、内容最多 1000 字
 -->
 <section class="post-comments" id="rin-comments"
-         data-rin-api="{{ site.comment.rin.api | default: 'https://aunger.eu.org/api' }}">
+         data-rin-api="{{ site.comment.rin.api | default: 'https://aunger.eu.org/api' }}"
+         data-rin-hidden="{{ page.hidden | default: false }}">
   <h3 class="rin-section-title">发表评论</h3>
   <noscript><p class="rin-empty">评论功能需要启用 JavaScript。</p></noscript>
 </section>
@@ -17,13 +18,23 @@
   var ROOT = document.getElementById('rin-comments');
   if (!ROOT) return;
   var API = ROOT.getAttribute('data-rin-api');
+  var IS_HIDDEN = ROOT.getAttribute('data-rin-hidden') === 'true';
 
-  // 从 /YYYY/MM/slug/ 取 slug；about 等特殊页 slug 为 'about'
+  // 从 page canonical URL 末尾取 slug（兼容 alias / 数字 id 两种形式）
+  // 例：https://aunger.eu.org/feed/agent-notes-day-two → 'agent-notes-day-two'
+  //     https://aunger.eu.org/feed/11                 → '11'
   function getSlug() {
+    var link = document.querySelector('link[rel="canonical"]');
+    if (link && link.href) {
+      var u = String(link.href).replace(/\/+$/, '');
+      var last = u.split('/').pop();
+      if (last) return decodeURIComponent(last);
+    }
+    // fallback: 从 pathname 解析
     var m = (location.pathname || '/').match(/\/(\d{4}\/\d{2}\/[^/]+)/);
     if (m) return m[1].split('/').pop();
-    var last = (location.pathname || '/').replace(/\/+$/, '').split('/').pop();
-    return last || '';
+    var last2 = (location.pathname || '/').replace(/\/+$/, '').split('/').pop();
+    return last2 || '';
   }
   var SLUG = getSlug();
 
@@ -35,10 +46,19 @@
     });
   }
 
-  // slug → feedId 映射（localStorage 缓存 10 分钟）
+  // slug → feedId 解析
+  // 主站 comment API 只支持数字 id（comments.ts 用 parseInt）；canonical 可能是 alias 或数字
+  // - 纯数字 SLUG：直接当 feedId，跳过索引（命中 canonical: /feed/11 等）
+  // - alias SLUG：从主站 feed list（normal 列表）拉 aliasMap，命中 alias → id
+  // - unlisted 文章（feed list 不列出，但页面 200 + comment API 对外开放）：
+  //     通过主站 alias 或 id 直调 comment API；当前评论数 = 0 时表现与 listed 文章一致
+  // - draft 文章：当前主站 comment API 实际对 draft 也开放（无鉴权），由备份站前端 hidden 标志兜底拦截
   var MAP_KEY = 'rin_feed_map_v1';
   var MAP_TTL = 10 * 60 * 1000;
-  function getFeedId(slug) {
+  function resolveFeedId(slug) {
+    if (/^[1-9]\d*$/.test(slug)) {
+      return Promise.resolve(parseInt(slug, 10));
+    }
     var cached = null;
     try {
       var raw = localStorage.getItem(MAP_KEY);
@@ -98,12 +118,14 @@
           var time = new Date(c.createdAt).toLocaleString('zh-CN', { hour12: false });
           return ''
             + '<div class="rin-item">'
-            +   '<div class="rin-item-head">'
-            +     avatarHtml
-            +     '<span class="rin-name">' + esc(name) + link + '</span>'
-            +     '<time class="rin-time">' + esc(time) + '</time>'
+            +   avatarHtml
+            +   '<div class="rin-item-main">'
+            +     '<div class="rin-item-head">'
+            +       '<span class="rin-name">' + esc(name) + link + '</span>'
+            +       '<time class="rin-time">' + esc(time) + '</time>'
+            +     '</div>'
+            +     '<div class="rin-item-body">' + esc(c.content) + '</div>'
             +   '</div>'
-            +   '<div class="rin-item-body">' + esc(c.content) + '</div>'
             + '</div>';
         }).join('');
         target.innerHTML = html;
@@ -127,7 +149,14 @@
   }
 
   // 主流程
-  getFeedId(SLUG).then(function (feedId) {
+  // hidden 文章（备份站映射主站 listed=0/draft=1 私密/降曝光）不开放评论
+  if (IS_HIDDEN) {
+    ROOT.insertAdjacentHTML('beforeend',
+      '<p class="rin-empty">本文为私密/降曝光文章，评论暂不开放。</p>');
+    return;
+  }
+
+  resolveFeedId(SLUG).then(function (feedId) {
     if (!feedId) {
       ROOT.insertAdjacentHTML('beforeend',
         '<p class="rin-empty">本文暂未关联主站，评论暂不可用。</p>');
