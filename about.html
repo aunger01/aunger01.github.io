@@ -1,0 +1,37 @@
+---
+layout: default
+title: 关于我
+permalink: /about/
+canonical: https://aunger.eu.org/feed/about
+sitemap: false
+---
+
+{%- comment -%}
+  复用 rin-sync 每周同步下来的 about 文章（_posts/*-about.md，带 canonical /feed/about）
+  主站改了这篇，备份站下次同步后本页自动跟着变，不用两边各维护一份。
+{%- endcomment -%}
+{% assign about_post = site.posts | where_exp: "p", "p.canonical contains '/feed/about'" | first %}
+
+{% if about_post %}
+<article class="page-container">
+  <header class="page-header">
+    <h1 class="page-title">{{ about_post.title }}</h1>
+  </header>
+  <section class="post page-content">
+    {{ about_post.content }}
+  </section>
+</article>
+
+{% include comments.html %}
+{% else %}
+<article class="page-container">
+  <header class="page-header">
+    <h1 class="page-title">关于我</h1>
+  </header>
+  <section class="post page-content">
+    <p>欢迎来到我的个人博客。</p>
+    <p>我是 Aunger，喜欢折腾各种技术，平时会在这里记录一些技术笔记与实践心得。</p>
+    <p>GitHub：<a href="https://github.com/aunger01">@aunger01</a></p>
+  </section>
+</article>
+{% endif %}
