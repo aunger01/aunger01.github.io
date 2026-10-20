@@ -1,42 +1,370 @@
 ---
-layout: default
+layout: null
+sitemap: false
 ---
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<title>404 · 页面不存在</title>
+<meta name="theme-color" content="#06070b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f8fb" media="(prefers-color-scheme: light)">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
 
-<section class="hero">
-  <img class="hero-avatar" src="/images/avatar.jpg" alt="{{ site.title }}">
-  <h1 class="hero-title">{{ site.title }}</h1>
-  {% if site.subtitle %}
-  <p class="hero-subtitle">{{ site.subtitle }}</p>
-  {% endif %}
-  <p class="hero-desc">{{ site.description }}</p>
-</section>
+  :root {
+    --bg: #06070b;
+    --bg-2: #0b0d14;
+    --fg: #eef1f8;
+    --muted: #8a93a6;
+    --line: rgba(255, 255, 255, .10);
+    --glow: rgba(124, 140, 255, .35);
+    --c1: #7c8cff;
+    --c2: #b06cff;
+    --c3: #4fd1c5;
+    --grain-opacity: .035;
+    --fg-72: rgba(238, 241, 248, .72);
+    --fg-18: rgba(238, 241, 248, .18);
+    --badge-bg: rgba(255, 255, 255, .045);
+    --accent-soft: rgba(79, 209, 197, .55);
+    --glow-2: rgba(124, 140, 255, .26);
+    --muted-82: rgba(138, 147, 166, .82);
+    --muted-68: rgba(138, 147, 166, .68);
+  }
 
-<section class="post-cards">
-  {% for post in paginator.posts %}
-  <article class="post-card">
-    <div class="post-card-meta">
-      <time datetime="{{ post.date | date: date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-      {% for tag in post.tags %}
-      <a class="tag-chip" href="/tags/#{{ tag }}-ref">{{ tag }}</a>
-      {% endfor %}
-    </div>
-    <h2 class="post-card-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
-    {% if post.excerpt %}
-    <p class="post-card-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 160 }}</p>
-    {% endif %}
-    <a class="post-card-more" href="{{ post.url }}">阅读全文 →</a>
-  </article>
-  {% endfor %}
-</section>
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f7f8fb;
+      --bg-2: #eef1f7;
+      --fg: #10131a;
+      --muted: #6b7385;
+      --line: rgba(16, 19, 26, .10);
+      --glow: rgba(124, 140, 255, .22);
+      --c1: #4f5bd5;
+      --c2: #8e4ec6;
+      --c3: #2aa198;
+      --grain-opacity: .022;
+      --fg-72: rgba(16, 19, 26, .68);
+      --fg-18: rgba(16, 19, 26, .16);
+      --badge-bg: rgba(16, 19, 26, .03);
+      --accent-soft: rgba(42, 161, 152, .45);
+      --glow-2: rgba(79, 91, 213, .18);
+      --muted-82: rgba(107, 115, 133, .85);
+      --muted-68: rgba(107, 115, 133, .70);
+    }
+  }
 
-{% if paginator.total_pages > 1 %}
-<nav class="pagination" aria-label="分页">
-  {% if paginator.previous_page %}
-  <a class="page-btn" href="{{ paginator.previous_page_path | relative_url }}">‹ 上一页</a>
-  {% endif %}
-  <span class="page-number">第 {{ paginator.page }} / {{ paginator.total_pages }} 页</span>
-  {% if paginator.next_page %}
-  <a class="page-btn" href="{{ paginator.next_page_path | relative_url }}">下一页 ›</a>
-  {% endif %}
-</nav>
-{% endif %}
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* ── 背景光晕 ─────────────────────────────── */
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background:
+      radial-gradient(1200px 800px at 50% -10%, var(--bg-2) 0%, transparent 70%),
+      var(--bg);
+  }
+
+  .blob {
+    position: fixed;
+    z-index: -2;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: .55;
+    will-change: transform;
+    pointer-events: none;
+  }
+
+  .blob-a {
+    width: 46vmax;
+    height: 46vmax;
+    top: -18vmax;
+    left: -12vmax;
+    background: radial-gradient(circle at 35% 35%, var(--c1), transparent 68%);
+    animation: drift-a 26s ease-in-out infinite alternate;
+  }
+
+  .blob-b {
+    width: 40vmax;
+    height: 40vmax;
+    right: -14vmax;
+    bottom: -16vmax;
+    background: radial-gradient(circle at 60% 40%, var(--c2), transparent 68%);
+    animation: drift-b 32s ease-in-out infinite alternate;
+  }
+
+  .blob-c {
+    width: 26vmax;
+    height: 26vmax;
+    left: 55%;
+    top: 45%;
+    background: radial-gradient(circle at 50% 50%, var(--c3), transparent 70%);
+    opacity: .28;
+    animation: drift-c 38s ease-in-out infinite alternate;
+  }
+
+  @keyframes drift-a {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to   { transform: translate3d(6vmax, 5vmax, 0) scale(1.15); }
+  }
+  @keyframes drift-b {
+    from { transform: translate3d(0, 0, 0) scale(1.05); }
+    to   { transform: translate3d(-7vmax, -4vmax, 0) scale(.92); }
+  }
+  @keyframes drift-c {
+    from { transform: translate3d(0, 0, 0) scale(1); opacity: .22; }
+    to   { transform: translate3d(-8vmax, 4vmax, 0) scale(1.25); opacity: .34; }
+  }
+
+  /* ── 网格与噪点 ───────────────────────────── */
+  .grid {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, var(--line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 10%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 10%, transparent 78%);
+    opacity: .7;
+  }
+
+  .grain {
+    position: fixed;
+    inset: -50%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  /* 跟随鼠标的聚光 */
+  .spotlight {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 30%), var(--glow), transparent 68%);
+    opacity: .55;
+    transition: opacity .4s ease;
+  }
+
+  /* ── 主体 ─────────────────────────────────── */
+  .stage {
+    position: relative;
+    z-index: 1;
+    width: min(92vw, 900px);
+    padding: 6vh 20px 12vh;
+    text-align: center;
+    transform: translate3d(calc(var(--px, 0) * 8px), calc(var(--py, 0) * 8px), 0);
+    transition: transform .35s cubic-bezier(.2, .7, .3, 1);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 clamp(18px, 3.4vh, 34px);
+    padding: 7px 16px 7px 13px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--badge-bg);
+    backdrop-filter: blur(6px);
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--c3);
+    box-shadow: 0 0 0 0 var(--accent-soft);
+    animation: pulse 2.6s ease-out infinite;
+  }
+
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 var(--accent-soft); }
+    70%  { box-shadow: 0 0 0 9px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+
+  .code {
+    margin: 0;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: clamp(104px, 27vw, 340px);
+    font-weight: 700;
+    line-height: .82;
+    letter-spacing: -.055em;
+    background: linear-gradient(175deg,
+      var(--fg) 0%,
+      var(--fg-72) 52%,
+      var(--fg-18) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    user-select: none;
+    filter: drop-shadow(0 12px 42px var(--glow-2));
+  }
+
+  .rule {
+    width: min(64vw, 420px);
+    height: 1px;
+    margin: clamp(26px, 4vh, 42px) auto clamp(22px, 3.4vh, 32px);
+    background: linear-gradient(90deg, transparent, var(--line) 18%, var(--line) 82%, transparent);
+    position: relative;
+  }
+
+  .rule::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    margin-left: -2.5px;
+    border-radius: 50%;
+    background: var(--c3);
+    box-shadow: 0 0 12px 2px var(--accent-soft);
+  }
+
+  .title {
+    margin: 0 0 14px;
+    font-size: clamp(17px, 2.1vw, 22px);
+    font-weight: 500;
+    letter-spacing: .32em;
+    text-indent: .32em;
+    color: var(--fg);
+  }
+
+  .desc {
+    margin: 0 auto;
+    max-width: 30em;
+    font-size: clamp(12.5px, 1.4vw, 14px);
+    line-height: 2;
+    color: var(--muted);
+    letter-spacing: .04em;
+  }
+
+  .hint {
+    display: inline-block;
+    margin-top: clamp(22px, 3.4vh, 32px);
+    padding-bottom: 4px;
+    font-size: 11.5px;
+    letter-spacing: .16em;
+    color: var(--muted-82);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .foot {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: max(18px, env(safe-area-inset-bottom));
+    z-index: 1;
+    text-align: center;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 10.5px;
+    letter-spacing: .18em;
+    color: var(--muted-68);
+    user-select: none;
+  }
+
+  @media (max-width: 480px) {
+    .stage { padding: 4vh 18px 14vh; }
+    .title { letter-spacing: .24em; text-indent: .24em; }
+    .grid { background-size: 44px 44px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob, .dot { animation: none !important; }
+    .stage { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="backdrop"></div>
+<div class="blob blob-a"></div>
+<div class="blob blob-b"></div>
+<div class="blob blob-c"></div>
+<div class="grid"></div>
+<div class="grain"></div>
+<div class="spotlight"></div>
+
+<main class="stage">
+  <div class="badge"><span class="dot"></span>Error 404</div>
+  <p class="code">404</p>
+  <div class="rule"></div>
+  <h1 class="title">这里什么都没有</h1>
+  <p class="desc">你要找的页面或许已被移动、删除，<br>也可能从来就不曾存在。</p>
+  <span class="hint">请检查地址是否正确</span>
+</main>
+
+<div class="foot">&copy; 2026 Aunger</div>
+
+<script>
+  (function () {
+    var stage = document.querySelector('.stage');
+    var root = document.documentElement;
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!stage || reduced) return;
+
+    var tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+
+    function loop() {
+      cx += (tx - cx) * 0.08;
+      cy += (ty - cy) * 0.08;
+      stage.style.setProperty('--px', cx.toFixed(4));
+      stage.style.setProperty('--py', cy.toFixed(4));
+      raf = (Math.abs(tx - cx) > 0.0005 || Math.abs(ty - cy) > 0.0005) ? requestAnimationFrame(loop) : null;
+    }
+
+    window.addEventListener('pointermove', function (e) {
+      var w = window.innerWidth || 1;
+      var h = window.innerHeight || 1;
+      tx = (e.clientX / w - 0.5) * 2;
+      ty = (e.clientY / h - 0.5) * 2;
+      root.style.setProperty('--mx', e.clientX + 'px');
+      root.style.setProperty('--my', e.clientY + 'px');
+      if (!raf) raf = requestAnimationFrame(loop);
+    }, { passive: true });
+
+    window.addEventListener('pointerleave', function () {
+      tx = 0; ty = 0;
+      if (!raf) raf = requestAnimationFrame(loop);
+    }, { passive: true });
+  })();
+</script>
+
+</body>
+</html>

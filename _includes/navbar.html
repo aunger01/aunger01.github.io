@@ -1,12 +1,12 @@
 <header class="site-navbar" id="site-navbar">
   <div class="navbar-inner">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/blog/">
       <img src="/images/avatar.jpg" alt="{{ site.title }}" class="navbar-avatar">
       <span class="navbar-brand-name">{{ site.title }}</span>
     </a>
 
     <nav class="navbar-nav" id="navbar-nav">
-      <a href="/" class="nav-link">首页</a>
+      <a href="/blog/" class="nav-link">首页</a>
       {% for item in site.nav %}
       <a href="{{ item.url }}" class="nav-link" title="{{ item.description }}">{{ item.title }}</a>
       {% endfor %}

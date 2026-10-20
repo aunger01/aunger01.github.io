@@ -1,0 +1,90 @@
+---
+layout: default
+title: 博客主页
+permalink: /blog/
+---
+<section class="hero">
+  <img class="hero-avatar" src="/images/avatar.jpg" alt="{{ site.title }}">
+  <h1 class="hero-title">{{ site.title }}</h1>
+  {% if site.subtitle %}
+  <p class="hero-subtitle">{{ site.subtitle }}</p>
+  {% endif %}
+  <p class="hero-desc">{{ site.description }}</p>
+</section>
+
+{% assign visible_posts = site.posts | where_exp: "post", "post.hidden != true" %}
+<section class="post-cards" id="post-cards">
+  {% for post in visible_posts %}
+  <article class="post-card">
+    <div class="post-card-meta">
+      <time datetime="{{ post.date | date: date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+      {% for tag in post.tags %}
+      <a class="tag-chip" href="/tags/#{{ tag }}-ref">{{ tag }}</a>
+      {% endfor %}
+    </div>
+    <h2 class="post-card-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+    {% if post.excerpt %}
+    <p class="post-card-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 160 }}</p>
+    {% endif %}
+    <a class="post-card-more" href="{{ post.url }}">阅读全文 →</a>
+  </article>
+  {% endfor %}
+</section>
+
+<nav class="pagination" id="pagination" aria-label="分页" hidden></nav>
+
+<script>
+  (function () {
+    var PAGE_SIZE = 5;
+    var list = document.getElementById('post-cards');
+    var nav = document.getElementById('pagination');
+    if (!list || !nav) return;
+
+    var cards = Array.prototype.slice.call(list.querySelectorAll('.post-card'));
+    var totalPages = Math.ceil(cards.length / PAGE_SIZE);
+    if (totalPages <= 1) return;
+
+    var current = 1;
+    try {
+      var q = new URLSearchParams(window.location.search).get('page');
+      current = Math.min(Math.max(parseInt(q, 10) || 1, 1), totalPages);
+    } catch (err) {
+      current = 1;
+    }
+
+    function render() {
+      cards.forEach(function (card, i) {
+        var pageOfCard = Math.floor(i / PAGE_SIZE) + 1;
+        card.style.display = pageOfCard === current ? '' : 'none';
+      });
+
+      var html = '';
+      if (current > 1) {
+        html += '<a class="page-btn" href="?page=' + (current - 1) + '" data-page="' + (current - 1) + '">‹ 上一页</a>';
+      }
+      html += '<span class="page-number">第 ' + current + ' / ' + totalPages + ' 页</span>';
+      if (current < totalPages) {
+        html += '<a class="page-btn" href="?page=' + (current + 1) + '" data-page="' + (current + 1) + '">下一页 ›</a>';
+      }
+      nav.innerHTML = html;
+      nav.hidden = false;
+    }
+
+    nav.addEventListener('click', function (e) {
+      var link = e.target.closest ? e.target.closest('a[data-page]') : null;
+      if (!link) return;
+      e.preventDefault();
+      current = parseInt(link.getAttribute('data-page'), 10) || 1;
+      render();
+      if (window.history && history.replaceState) {
+        try {
+          history.replaceState(null, '', window.location.pathname + '?page=' + current);
+        } catch (err) { /* file:// 等受限环境忽略 */ }
+      }
+      var offset = list.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
+    });
+
+    render();
+  })();
+</script>
