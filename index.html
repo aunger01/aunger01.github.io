@@ -32,7 +32,6 @@ sitemap: false
     --accent-soft: rgba(79, 209, 197, .55);
     --glow-2: rgba(124, 140, 255, .26);
     --muted-82: rgba(138, 147, 166, .82);
-    --muted-68: rgba(138, 147, 166, .68);
   }
 
   @media (prefers-color-scheme: light) {
@@ -53,7 +52,6 @@ sitemap: false
       --accent-soft: rgba(42, 161, 152, .45);
       --glow-2: rgba(79, 91, 213, .18);
       --muted-82: rgba(107, 115, 133, .85);
-      --muted-68: rgba(107, 115, 133, .70);
     }
   }
 
@@ -285,20 +283,6 @@ sitemap: false
     border-bottom: 1px solid var(--line);
   }
 
-  .foot {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: max(18px, env(safe-area-inset-bottom));
-    z-index: 1;
-    text-align: center;
-    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-    font-size: 10.5px;
-    letter-spacing: .18em;
-    color: var(--muted-68);
-    user-select: none;
-  }
-
   @media (max-width: 480px) {
     .stage { padding: 4vh 18px 14vh; }
     .title { letter-spacing: .24em; text-indent: .24em; }
@@ -329,8 +313,6 @@ sitemap: false
   <p class="desc">你要找的页面或许已被移动、删除，<br>也可能从来就不曾存在。</p>
   <span class="hint">请检查地址是否正确</span>
 </main>
-
-<div class="foot">&copy; 2026 Aunger</div>
 
 <script>
   (function () {
