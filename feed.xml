@@ -12,10 +12,17 @@ layout: null
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
     <generator>Jekyll v{{ jekyll.version }}</generator>
     {% assign visible_posts = site.posts | where_exp: "post", "post.hidden != true" %}
+    {%- comment -%}
+      RSS 里的图片是站内根相对路径（/assets/img/rin/...），订阅器无法解析，必须补成绝对地址。
+      前缀由 site.url + site.baseurl 派生，换域名不用改这里。
+    {%- endcomment -%}
+    {% assign site_root = site.url | append: site.baseurl %}
+    {% capture img_src_local %}src="{{ site.baseurl }}/assets/{% endcapture %}
+    {% capture img_src_prefix %}src="{{ site_root }}{{ site.baseurl }}/assets/{% endcapture %}
     {% for post in visible_posts limit:10 %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.content | xml_escape }}</description>
+        <description>{{ post.content | replace: img_src_local, img_src_prefix | xml_escape }}</description>
         <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
         <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
         <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>

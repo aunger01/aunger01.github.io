@@ -6,7 +6,7 @@
   - 前端限流：60 秒 1 条、内容最多 1000 字
 -->
 <section class="post-comments" id="rin-comments"
-         data-rin-api="{{ site.comment.rin.api | default: 'https://aunger.eu.org/api' }}"
+         data-rin-api="{{ site.rin.main_url | default: 'https://aunger.eu.org' | append: '/api' }}"
          data-rin-hidden="{{ page.hidden | default: false }}">
   <h3 class="rin-section-title">发表评论</h3>
   <noscript><p class="rin-empty">评论功能需要启用 JavaScript。</p></noscript>

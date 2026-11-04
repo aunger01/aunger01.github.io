@@ -5,3 +5,6 @@ scripts/** text eol=lf
 *.png binary
 *.jpg binary
 *.ico binary
+*.webp binary
+*.gif binary
+*.avif binary

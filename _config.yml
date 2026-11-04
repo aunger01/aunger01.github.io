@@ -6,7 +6,19 @@ description: 欢迎来到我的个人博客
 avatarTitle: 安杰の博客
 # 头像里面的描述
 avatarDesc: Test / UID
+
+# ============================================================
+# ★ 换域名只改两处：这里的 url + 仓库根目录的 CNAME 文件
+#   站内链接、RSS、og:url、canonical、JSON-LD、sitemap 都由 Liquid 从 url 派生，无需逐处改；
+#   文章正文里的图片是「根相对路径」（/assets/img/rin/xxx.webp），与域名完全无关，换域名自动生效。
+#   若将来改成子路径部署（如 example.com/blog/），把 baseurl 填上即可。
+# ============================================================
 url: "https://10000101.xyz"
+# baseurl: "/blog"
+
+# 主站（Rin）域名：全站唯一来源。同步脚本、评论接口都从这里读，换主站域名只改这一行
+rin:
+    main_url: "https://aunger.eu.org"
 
 # 博客是否自动生成目录，false为不生成
 enableToc: true
@@ -17,9 +29,8 @@ enableToc: true
 # - 数据进主站 D1 comments 表，主站文章页同步显示
 # - 游客匿名（仅昵称必填），不暴露 GitHub 用户名
 # - 前端限流：60 秒 1 条、内容 ≤ 1000 字
-comment:
-    rin:
-        api: https://aunger.eu.org/api  # Rin 主站 API 前缀
+# ★ API 前缀不在这里配置，由上面的 rin.main_url 自动派生（见 _includes/comments.html），
+#   换主站域名只改 rin.main_url 一处。
 
 # Social
 social:

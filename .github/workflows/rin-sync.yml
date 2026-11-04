@@ -31,7 +31,15 @@ jobs:
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
           D1_DATABASE_ID: ${{ secrets.D1_DATABASE_ID }}
-        run: node scripts/rin-sync.mjs
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          # 主站域名：仓库 Settings → Variables 里配 RIN_MAIN_SITE 即可换域名，不改代码；
+          # 未配置时脚本自动回落到 _config.yml 的 rin.main_url
+          RIN_MAIN_SITE: ${{ vars.RIN_MAIN_SITE }}
+          # 统一压 webp：sharp 缺失时直接报错，避免静默退化成原格式
+          RIN_REQUIRE_WEBP: '1'
+        run: |
+          npm install --no-save sharp
+          node scripts/rin-sync.mjs
 
       # 白名单导出：仅内容表，排除 cache（站内配置含 webhook/api_key 明文）与 users（password/openid）
       # _cf_KV 为 CF 保护表，wrangler 导出时本就跳过
@@ -59,7 +67,7 @@ jobs:
         run: |
           git config user.name "Aunger (Rin Sync)"
           git config user.email "aunger01@users.noreply.github.com"
-          git add _posts/ _data/
+          git add _posts/ _data/ assets/img/rin/
           if git diff --cached --quiet; then
             echo "No changes to sync."
           else
