@@ -6,7 +6,7 @@
   - 前端限流：60 秒 1 条、内容最多 1000 字
 -->
 <section class="post-comments" id="rin-comments"
-         data-rin-api="{{ site.rin.main_url | default: 'https://aunger.eu.org' | append: '/api' }}"
+         data-rin-api="{{ site.rin.comment_url | default: site.rin.main_url | default: 'https://aunger.eu.org' | append: '/api' }}"
          data-rin-hidden="{{ page.hidden | default: false }}">
   <h3 class="rin-section-title">发表评论</h3>
   <noscript><p class="rin-empty">评论功能需要启用 JavaScript。</p></noscript>
@@ -98,9 +98,10 @@
   }
 
   // 渲染评论列表
+  // 失败时把真实原因写进页面（HTTP 状态码 / 被拦截），省得每次都靠抓包定位
   function renderList(feedId, target) {
     return fetch(API + '/comment/' + feedId, { credentials: 'omit' })
-      .then(function (r) { if (!r.ok) throw new Error('list'); return r.json(); })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(function (list) {
         if (!list || !list.length) {
           target.innerHTML = '<p class="rin-empty">暂无评论，欢迎抢沙发 ✦</p>';
@@ -130,8 +131,10 @@
         }).join('');
         target.innerHTML = html;
       })
-      .catch(function () {
-        target.innerHTML = '<p class="rin-empty">评论加载失败，<a href="javascript:location.reload()">刷新</a> 重试。</p>';
+      .catch(function (e) {
+        var why = (e && e.message) ? e.message : '网络错误';
+        if (why === 'Failed to fetch') why = '请求被边缘拦截（跨域被 Cloudflare 挑战时即此表现）';
+        target.innerHTML = '<p class="rin-empty">评论加载失败：' + esc(why) + '　<a href="javascript:location.reload()">刷新</a></p>';
       });
   }
 

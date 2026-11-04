@@ -458,7 +458,14 @@ img::-moz-selection {
     font-size: 1.2rem;
     margin: 0 0 14px;
     padding: 0;
-    color: inherit;
+    /* 主题给全站 h3 加了浅蓝底块(#B9D3EE)+左边条，暗色模式下又把字改成浅灰，
+       结果浅字配浅底对比度只有 1.08:1，几乎隐形。这里显式拆掉标题装饰，
+       让它回归普通小标题（评论区在 .post 外，吃不到 .post h3 的覆盖）。 */
+    text-indent: 0;
+    background: none;
+    box-shadow: none;
+    border: none;
+    color: var(--text);
     font-weight: 600;
   }
   .rin-section-title-list { margin-top: 36px; }
@@ -537,7 +544,8 @@ img::-moz-selection {
     padding: 8px 22px;
     border: none;
     border-radius: 999px;
-    background: #5dade2;
+    /* #5dade2 配白字对比度只有 2.46:1，加深到 5.2:1 */
+    background: #2472a4;
     color: #ffffff;
     font: inherit;
     font-weight: 500;
@@ -545,7 +553,7 @@ img::-moz-selection {
     transition: background 0.15s, opacity 0.15s;
   }
   #rin-submit:hover:not(:disabled) {
-    background: #4a9bd9;
+    background: #1d5e88;
   }
   #rin-submit:disabled {
     opacity: 0.4;
@@ -556,6 +564,10 @@ img::-moz-selection {
   .rin-msg-ok { color: #2a8f4a; }
   .rin-msg-error { color: #c0392b; }
   .rin-msg-warn { color: #b8860b; }
+  /* 暗色模式下提示色整体提亮，避免深底上发暗 */
+  html.theme-dark .rin-msg-ok { color: #7ed6a2; }
+  html.theme-dark .rin-msg-error { color: #ff9a8b; }
+  html.theme-dark .rin-msg-warn { color: #ffd479; }
   .rin-empty {
     margin: 8px 0 24px;
     opacity: 0.6;
@@ -593,7 +605,8 @@ img::-moz-selection {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #5dade2;
+    /* 与 #rin-submit 同理，白字需要更深的底才够对比 */
+    background: #2472a4;
     color: #ffffff;
     font-weight: 600;
     font-size: 0.9em;

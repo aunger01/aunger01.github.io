@@ -19,6 +19,10 @@ url: "https://10000101.xyz"
 # 主站（Rin）域名：全站唯一来源。同步脚本、评论接口都从这里读，换主站域名只改这一行
 rin:
     main_url: "https://aunger.eu.org"
+    # 评论接口单独走哪个域名（可选，默认跟随 main_url）。
+    # 用途：主站域名开了 Cloudflare 防爬（Bot Fight Mode）会连跨站评论请求一起挑战，
+    # 若某天主站两个域名都被防爬挡住评论，可在这里指到一个不挑跨域请求的域名。
+    # comment_url: "https://blog.l1n2.com"
 
 # 博客是否自动生成目录，false为不生成
 enableToc: true
