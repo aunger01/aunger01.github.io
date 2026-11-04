@@ -9,7 +9,7 @@ canonical: https://aunger.eu.org/feed/19
 <!-- rin-sync-managed -->
 > 这篇教程手把手教你把 Google Play 账号转到美区。
 >
-> ![](https://aunger.eu.org/api/blob/images/f30d3513434b70ed29f673d2d77b6a4debfec242.webp#blurhash=LpO%7CX_t79Ft7%25Mj%5BWBay00fPt7WB&width=1080&height=766)
+> ![](/assets/img/rin/images_f30d3513434b70ed29f673d2d77b6a4debfec242.webp#blurhash=LpO%7CX_t79Ft7%25Mj%5BWBay00fPt7WB&width=1080&height=766)
 
 ## 操作步骤
 
@@ -63,7 +63,7 @@ https://play.google.com/settings
 
 找到左侧的「**兑换**」按钮，随意输入 20 位大写英文字母后点击「兑换」。兑换会失败，但这不影响结果。
 
-![](https://aunger.eu.org/api/blob/images/8a13520fb2ffecde9d7adf0c752211fade8ca049.webp#blurhash=LfO43jt54nxu%3FIa%23WBof00WExaae&width=1080&height=766)
+![](/assets/img/rin/images_8a13520fb2ffecde9d7adf0c752211fade8ca049.webp#blurhash=LfO43jt54nxu%3FIa%23WBof00WExaae&width=1080&height=766)
 
 刷新页面，回到设置页检查位置信息，如果顺利，账号所属区域已变为**美国**。
 

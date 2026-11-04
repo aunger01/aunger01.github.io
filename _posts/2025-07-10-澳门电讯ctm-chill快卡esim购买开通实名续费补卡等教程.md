@@ -11,7 +11,7 @@ canonical: https://aunger.eu.org/feed/14
 
 ​
 
-![](https://aunger.eu.org/api/blob/images/d2e31196a4db66c7005d94fb372a0e74fd14148f.jpg#blurhash=LTPsn%3BoiE0_3_LxsRQRQROn%24%25Mof&width=1080&height=2206)
+![](/assets/img/rin/images_d2e31196a4db66c7005d94fb372a0e74fd14148f.webp#blurhash=LTPsn%3BoiE0_3_LxsRQRQROn%24%25Mof&width=1080&height=2206)
 
 ***
 
@@ -23,11 +23,11 @@ canonical: https://aunger.eu.org/feed/14
 
 ​
 
-![](https://aunger.eu.org/api/blob/images/eef86d5cf77353c2a75af12e43bf7f9976908633.jpg#blurhash=LeQ%5D%2By%25Lofxu4nRkj%5Bj%5B00a%23t7ay&width=1080&height=1644)
+![](/assets/img/rin/images_eef86d5cf77353c2a75af12e43bf7f9976908633.webp#blurhash=LeQ%5D%2By%25Lofxu4nRkj%5Bj%5B00a%23t7ay&width=1080&height=1644)
 
 ​
 
-![](https://aunger.eu.org/api/blob/images/fa099cd175cad293b83e68eec5ceded34225bcea.jpg#blurhash=LVNwTX0000ozMyWBV%5BW%3DDjxuafW%3D&width=1080&height=735)
+![](/assets/img/rin/images_fa099cd175cad293b83e68eec5ceded34225bcea.webp#blurhash=LVNwTX0000ozMyWBV%5BW%3DDjxuafW%3D&width=1080&height=735)
 
 ​
 
@@ -39,17 +39,17 @@ canonical: https://aunger.eu.org/feed/14
 
 1、按要求填写信息、输入验证码，确认付款后，会立即收到一封官方邮件。
 
-![](https://aunger.eu.org/api/blob/images/caca9c23a072ff1d2d9c21b3740c728bb91e2bc9.jpg#blurhash=LCQcn%7B%25MWB%25M-%3BWBWBfQ00WBfQWB&width=1080&height=761)
+![](/assets/img/rin/images_caca9c23a072ff1d2d9c21b3740c728bb91e2bc9.webp#blurhash=LCQcn%7B%25MWB%25M-%3BWBWBfQ00WBfQWB&width=1080&height=761)
 
 2、邮件包含两部分关键内容：一是所购 eSIM 的信息，二是实名认证的说明。
 
 3、先将 eSIM 添加到手机，按提示操作即可。（若你用的是eSTK实体eSIM卡，直接扫描邮件里的二维码添加即可）
 
-![](https://aunger.eu.org/api/blob/images/8319e9fff21de5d35d80b6cc1229a7d66e725bdf.jpg#blurhash=L86kbaofo%24kCneayjDf5_4j%5BkDj%5D&width=1080&height=735)
+![](/assets/img/rin/images_8319e9fff21de5d35d80b6cc1229a7d66e725bdf.webp#blurhash=L86kbaofo%24kCneayjDf5_4j%5BkDj%5D&width=1080&height=735)
 
 若eSIM手机已启用两张卡，添加时系统会提示关闭一张，照做就行，后续可随时切换。（⚠️国行eSIM手机可能无法在境内添加海外eSIM卡，删除大陆eSIM号码后想重新使用，可能得重新去营业厅添加）
 
-![](https://aunger.eu.org/api/blob/images/18a72fb1811bb621565edc661a1f56497fc9adc4.jpg#blurhash=LHQvtO_300_3-%3BfjRjfj9FfQ-%3Bay&width=1080&height=2206)
+![](/assets/img/rin/images_18a72fb1811bb621565edc661a1f56497fc9adc4.webp#blurhash=LHQvtO_300_3-%3BfjRjfj9FfQ-%3Bay&width=1080&height=2206)
 
 4、若添加后无信号，进入网络选择设置，关闭 “自动选择”，手动选择 “中国移动”。亲测境外卡在大陆漫游，手动锁定运营商比自动选择更稳定。
 
@@ -59,7 +59,7 @@ canonical: https://aunger.eu.org/feed/14
 
 澳门手机卡需实名认证后才能使用，大陆用户可用大陆身份证办理，具体步骤如下：
 
-![](https://aunger.eu.org/api/blob/images/314063cf5e412866f28c8b92f3d6cb8045afe41e.jpg#blurhash=LxI%23%242of00WBRjfQRjayxufQt7j%5B&width=1080&height=735)
+![](/assets/img/rin/images_314063cf5e412866f28c8b92f3d6cb8045afe41e.webp#blurhash=LxI%23%242of00WBRjfQRjayxufQt7j%5B&width=1080&height=735)
 
 ​
 
@@ -67,17 +67,17 @@ canonical: https://aunger.eu.org/feed/14
 
 ​
 
-![](https://aunger.eu.org/api/blob/images/126c0104795c72535d76466cc6c839d7b719a905.jpg#blurhash=LHPs%23ExvV%3F%7Eq-%3At7WBj%5BxsxukCRj&width=939&height=1920)
+![](/assets/img/rin/images_126c0104795c72535d76466cc6c839d7b719a905.webp#blurhash=LHPs%23ExvV%3F%7Eq-%3At7WBj%5BxsxukCRj&width=939&height=1920)
 
 2、完成实名：点击短信中的网址，按要求填写资料 —— 手机卡信息在付款邮件中，个人资料如实填写，并上传身份证照片。
 
 ​
 
-![](https://aunger.eu.org/api/blob/images/28ee3c61639571781ed3f880b427fd826993f686.jpg#blurhash=LkJ8VD%3FaD*ahWQohxsoc01ITt8ah&width=1080&height=735)
+![](/assets/img/rin/images_28ee3c61639571781ed3f880b427fd826993f686.webp#blurhash=LkJ8VD%3FaD*ahWQohxsoc01ITt8ah&width=1080&height=735)
 
 3、CTM 线上自助实名几乎秒过，提交后没一会儿能收到成功短信。（如果你是晚上或休息时间提交认证，可能会延迟，没收到实名成功的短信，可以官网客服或发邮件催一下）
 
-![](https://aunger.eu.org/api/blob/images/46536bfa9890600558e763d05e9e982b05f91e3b.jpg#blurhash=LHPjJntSRN%7Ep-%3Bt7RjWBRhxtxvR*&width=939&height=1920)
+![](/assets/img/rin/images_46536bfa9890600558e763d05e9e982b05f91e3b.webp#blurhash=LHPjJntSRN%7Ep-%3Bt7RjWBRhxtxvR*&width=939&height=1920)
 
 ​
 
@@ -89,7 +89,7 @@ canonical: https://aunger.eu.org/feed/14
 
 ​
 
-![](https://aunger.eu.org/api/blob/images/82a134d32d30ce0efb451f76349dbb215dd63ef6.jpg#blurhash=LWO%7Cb2t700t7j%5BayRjay00ayofWB&width=1080&height=521)
+![](/assets/img/rin/images_82a134d32d30ce0efb451f76349dbb215dd63ef6.webp#blurhash=LWO%7Cb2t700t7j%5BayRjay00ayofWB&width=1080&height=521)
 
 #### （2）实名认证细节
 
@@ -113,9 +113,9 @@ canonical: https://aunger.eu.org/feed/14
 
 💦个人经验：我是深夜才去激活的，实名认证提交后，第二天早上还一直显示审核中，在App客服提交了反馈，马上实名就通过了，还收到了反馈回复邮件👍
 
-![](https://aunger.eu.org/api/blob/images/9fc0d89ff078b3f94b202d1c43b305d870d1a08d.png#blurhash=L27A--%5ERba%25NNtM%7Bxa%252tlnit7Io&width=899&height=956)
+![](/assets/img/rin/images_9fc0d89ff078b3f94b202d1c43b305d870d1a08d.webp#blurhash=L27A--%5ERba%25NNtM%7Bxa%252tlnit7Io&width=899&height=956)
 
-![](https://aunger.eu.org/api/blob/images/115a35d5704f0a098cfae3161d9d1e8751593ca0.png#blurhash=LOTI%2Cas%3AM%7Bt7%7Eqfkayayj%5Bj%5Bj%5Bj%5B&width=1080&height=301)
+![](/assets/img/rin/images_115a35d5704f0a098cfae3161d9d1e8751593ca0.webp#blurhash=LOTI%2Cas%3AM%7Bt7%7Eqfkayayj%5Bj%5Bj%5Bj%5B&width=1080&height=301)
 
 到这里开卡成功了，实名也完成了，就可以正式开始用卡了。
 
@@ -125,7 +125,7 @@ canonical: https://aunger.eu.org/feed/14
 
 开卡并实名后，重点说明资费优化和套餐选择，避免无效扣费。
 
-![](https://aunger.eu.org/api/blob/images/136fb34e4bdc110d8844475893b20c4f58dafd80.jpg#blurhash=LTQm6dyDD%25%3FHr_ShR*jF4UNb%25gjZ&width=1080&height=2206)
+![](/assets/img/rin/images_136fb34e4bdc110d8844475893b20c4f58dafd80.webp#blurhash=LTQm6dyDD%25%3FHr_ShR*jF4UNb%25gjZ&width=1080&height=2206)
 
 #### （1）关于 “自己人任倾计划”
 
@@ -135,7 +135,7 @@ canonical: https://aunger.eu.org/feed/14
 
 ​
 
-![](https://aunger.eu.org/api/blob/images/78ed4a7581a1bd5aa3c6c705554930f67c2d005b.jpg#blurhash=LGQ0Bk.7%25Ltmw7S%24oJOE01NFn%25T0&width=1080&height=1103)
+![](/assets/img/rin/images_78ed4a7581a1bd5aa3c6c705554930f67c2d005b.webp#blurhash=LGQ0Bk.7%25Ltmw7S%24oJOE01NFn%25T0&width=1080&height=1103)
 
 #### （2）流量套餐选择
 
@@ -146,7 +146,7 @@ CTM 流量套餐分 “月流量” 和 “永久有效流量” 两类，均为
 
 ​
 
-![](https://aunger.eu.org/api/blob/images/96149b3074fc626d1ef5b460cefdffd70052732a.jpg#blurhash=LLQvqD%25Mt7tlM%23S4WBSi4UR*WBS%24&width=1080&height=1103)
+![](/assets/img/rin/images_96149b3074fc626d1ef5b460cefdffd70052732a.webp#blurhash=LLQvqD%25Mt7tlM%23S4WBSi4UR*WBS%24&width=1080&height=1103)
 
 #### （3）初始余额优化方案（100 元充值）
 
@@ -155,9 +155,9 @@ CTM 流量套餐分 “月流量” 和 “永久有效流量” 两类，均为
 1. 单人使用：买永久有效流量的 88 元 8G 套餐，余额降至 2 元（低于 10 元），等 30 天以后，“自己人”计划自动取消后再充值。
 2. 多人组队：和朋友一起买 90 元 12G 月费套餐，借助 “GB 转易” 服务 —— 可将自己的流量转给他人，且转赠后流量变为永久有效；也是等30天以后再充值。
 
-![](https://aunger.eu.org/api/blob/images/b3d571d3e9ad14fdcc8ce0de978f5a15fe77612f.jpg#blurhash=LMQcbo%253t7krr%7BNHazS%2401o%23f6NH&width=1080&height=1103)
+![](/assets/img/rin/images_b3d571d3e9ad14fdcc8ce0de978f5a15fe77612f.webp#blurhash=LMQcbo%253t7krr%7BNHazS%2401o%23f6NH&width=1080&height=1103)
 
-![](https://aunger.eu.org/api/blob/images/17314f27aafdc2e8fdda945345834dd4bd9619a9.jpg#blurhash=LQP%253FVsjFyDD*E1jYkX0LOYoLR*&width=1080&height=1103)
+![](/assets/img/rin/images_17314f27aafdc2e8fdda945345834dd4bd9619a9.webp#blurhash=LQP%253FVsjFyDD*E1jYkX0LOYoLR*&width=1080&height=1103)
 
 #### （4）后续套餐选择（计划取消后）
 
@@ -176,7 +176,7 @@ CTM 充值几乎都送 10% 话费，其中 “238 元充 300 元” 优惠最大
 * 90 元 12G：约 5.95 元 / G
 * 38 元 5G：约 6.03 元 / G
 
-![](https://aunger.eu.org/api/blob/images/7dc1031201b9e04223979f3bd0b171831396fa24.jpg#blurhash=LTOW%5DLt88%5Ext9%25WExWjs9Gju%25May&width=1080&height=1522)
+![](/assets/img/rin/images_7dc1031201b9e04223979f3bd0b171831396fa24.webp#blurhash=LTOW%5DLt88%5Ext9%25WExWjs9Gju%25May&width=1080&height=1522)
 
 #### （2）与 “电信澳门大湾区预付卡” 对比
 
@@ -184,7 +184,7 @@ CTM 充值几乎都送 10% 话费，其中 “238 元充 300 元” 优惠最大
 
 ​
 
-![](https://aunger.eu.org/api/blob/images/58a2fc40078e6d24b512dd06335f4d20b29f4fc0.jpg#blurhash=LMQch*.84n_3xIS%24bboL4UNd%25ge.&width=691&height=1920)
+![](/assets/img/rin/images_58a2fc40078e6d24b512dd06335f4d20b29f4fc0.webp#blurhash=LMQch*.84n_3xIS%24bboL4UNd%25ge.&width=691&height=1920)
 
 ###
 
@@ -198,7 +198,7 @@ CTM 充值几乎都送 10% 话费，其中 “238 元充 300 元” 优惠最大
 
 ​
 
-![](https://aunger.eu.org/api/blob/images/9fcc092e497d517db1c1bc5c2ba0210c5b46b10c.jpg#blurhash=LHRC%3B%7E_M%251%25NnntQslNJ4Uo%7Cr%3FNH&width=1080&height=1103)
+![](/assets/img/rin/images_9fcc092e497d517db1c1bc5c2ba0210c5b46b10c.webp#blurhash=LHRC%3B%7E_M%251%25NnntQslNJ4Uo%7Cr%3FNH&width=1080&height=1103)
 
 ​
 
@@ -207,7 +207,7 @@ CTM 充值几乎都送 10% 话费，其中 “238 元充 300 元” 优惠最大
 * 连中国移动：澳门号拨大陆号用 “0086 + 手机号” 或 “+86 + 手机号”；大陆号拨澳门号用 “00853 + 澳门号” 或 “+853 + 澳门号”。
 * 连中国联通：按官方图示的拨号规则操作（参考原文图示）。
 
-![](https://aunger.eu.org/api/blob/images/2c605b48af0edaa3840f8d86a6841dbf94ff18b9.jpg#blurhash=LGQJfn-%3BD%25%7Eqt7j%5Bj%3Fay%25M%25MofRj&width=939&height=1920)
+![](/assets/img/rin/images_2c605b48af0edaa3840f8d86a6841dbf94ff18b9.webp#blurhash=LGQJfn-%3BD%25%7Eqt7j%5Bj%3Fay%25M%25MofRj&width=939&height=1920)
 
 3、漫游通话成本：在大陆接打大陆电话，连移动是 “打 4 元 / 分、接 7 元 / 分”，连联通是 “打 7 元 / 分、接 6 元 / 分”，短信 3 元 / 条，建议仅应急使用，日常用大陆号码。
 
@@ -221,13 +221,13 @@ CTM 充值几乎都送 10% 话费，其中 “238 元充 300 元” 优惠最大
 
 1、实名：优先线上自助，失败可试邮件人工审核，大陆身份证异地可用。2、套餐优化：开卡后先把余额降到 10 元以下，等 “自己人任倾计划” 自动取消再充值。3、充值选择：用量大选 “238 充 300”，用量小每 180 天充 50 元即可。4、流量推荐：优先 38 元 5G 永久套餐，无需操作 “GB 转易”。5、有效期：到期前需充值延长，充 50 元可延长 180 天。6、更换手机：参考原文图示第 17 条操作。
 
-![](https://aunger.eu.org/api/blob/images/b3a6f2efd23813f6a49e2d1f51da8d85dcfeab20.jpg#blurhash=LOOWsix%5DxbtSMft7ayS44UW%3BWBSh&width=1080&height=1103)
+![](/assets/img/rin/images_b3a6f2efd23813f6a49e2d1f51da8d85dcfeab20.jpg#blurhash=LOOWsix%5DxbtSMft7ayS44UW%3BWBSh&width=1080&height=1103)
 
 7、手机遗失：参考原文图示第 13 条，网传 “重购卡后可联系客服保留原号，但流量不保留”，未亲测，建议妥善保管手机。
 
 ​
 
-![](https://aunger.eu.org/api/blob/images/f31ac0cd7d869662c74fc8e85c7c38303956270f.jpg#blurhash=LKR3QQ%3Fb00%3Fbxuofj%5BWB9Eay-%3BfQ&width=1080&height=2206)
+![](/assets/img/rin/images_f31ac0cd7d869662c74fc8e85c7c38303956270f.webp#blurhash=LKR3QQ%3Fb00%3Fbxuofj%5BWB9Eay-%3BfQ&width=1080&height=2206)
 
 ​
 
@@ -245,13 +245,13 @@ CTM 充值几乎都送 10% 话费，其中 “238 元充 300 元” 优惠最大
 
 或许你已经开始为你绑定的各大平台而心急了。或者你可能从CTM在线客服5G专员中得到补办eSIM需要到CTM线下门店办理。
 
-![](https://aunger.eu.org/api/blob/images/b870cde20047341baa0a7430f9b22ca9c0a7175b.png#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
+![](/assets/img/rin/images_b870cde20047341baa0a7430f9b22ca9c0a7175b.webp#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
 
 ​
 
 不要去问CTM Buddy右上角在线客服，他们没权限，会叫你去线下补卡
 
-![](https://aunger.eu.org/api/blob/images/b870cde20047341baa0a7430f9b22ca9c0a7175b.png#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
+![](/assets/img/rin/images_b870cde20047341baa0a7430f9b22ca9c0a7175b.webp#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
 
 ​
 
@@ -261,7 +261,7 @@ CTM 充值几乎都送 10% 话费，其中 “238 元充 300 元” 优惠最大
 
 以下是来自帮助人员 CTM eHelpDesk：helpdesk\@macau.ctm.net
 
-![](https://aunger.eu.org/api/blob/images/b870cde20047341baa0a7430f9b22ca9c0a7175b.png#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
+![](/assets/img/rin/images_b870cde20047341baa0a7430f9b22ca9c0a7175b.webp#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
 
 ​
 
@@ -283,7 +283,7 @@ CTM 充值几乎都送 10% 话费，其中 “238 元充 300 元” 优惠最大
 
 1、检查原eSIM有效期，如过期，请通过CTM Buddy或者微信公众号增值。
 
-![](https://aunger.eu.org/api/blob/images/b870cde20047341baa0a7430f9b22ca9c0a7175b.png#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
+![](/assets/img/rin/images_b870cde20047341baa0a7430f9b22ca9c0a7175b.webp#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
 
 ​
 
@@ -291,7 +291,7 @@ CTM 充值几乎都送 10% 话费，其中 “238 元充 300 元” 优惠最大
 
 <span style="color: rgba(143, 143, 143, 1;">注意：补卡会导致流量清零。</span>
 
-![](https://aunger.eu.org/api/blob/images/b870cde20047341baa0a7430f9b22ca9c0a7175b.png#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
+![](/assets/img/rin/images_b870cde20047341baa0a7430f9b22ca9c0a7175b.webp#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
 
 ​
 
@@ -303,7 +303,7 @@ _<u>https\://www\.ctm.net/selfservice/eSIM/introduce</u>_
 
 仍是购买CHILL 快卡。
 
-![](https://aunger.eu.org/api/blob/images/b870cde20047341baa0a7430f9b22ca9c0a7175b.png#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
+![](/assets/img/rin/images_b870cde20047341baa0a7430f9b22ca9c0a7175b.webp#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
 
 ​
 
@@ -349,12 +349,12 @@ _<u>https\://www\.ctm.net/selfservice/eSIM/introduce</u>_
 
 4、新购买的eSIM的收据邮件截图，截图需包含ICCID和二维码。
 
-![](https://aunger.eu.org/api/blob/images/b870cde20047341baa0a7430f9b22ca9c0a7175b.png#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
+![](/assets/img/rin/images_b870cde20047341baa0a7430f9b22ca9c0a7175b.webp#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
 
 ​
 
 提交后一般一天内就会有回复，这时候即可添加到设备中了。此时余额仅有90/190 mop（开通了自己人计划），原卡余额大约几个小时就会添加上。
 
-![](https://aunger.eu.org/api/blob/images/b870cde20047341baa0a7430f9b22ca9c0a7175b.png#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
+![](/assets/img/rin/images_b870cde20047341baa0a7430f9b22ca9c0a7175b.webp#blurhash=L%7ETSUAt7fQt7%7Eqt7fQt7%7Eqt7fQt7&width=691&height=10)
 
 <span style="color: rgba(143, 143, 143, 1;">—— END ——</span>
