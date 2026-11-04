@@ -65,12 +65,30 @@ jobs:
         env:
           SYNC_GH_TOKEN: ${{ github.token }}
         run: |
+          set -u
+          REMOTE="https://x-access-token:${SYNC_GH_TOKEN}@github.com/aunger01/aunger01.github.io.git"
           git config user.name "Aunger (Rin Sync)"
           git config user.email "aunger01@users.noreply.github.com"
           git add _posts/ _data/ assets/img/rin/
           if git diff --cached --quiet; then
             echo "No changes to sync."
-          else
-            git commit -m "sync: 从 Rin 主站同步文章 $(date -u +%Y-%m-%d)"
-            git push "https://x-access-token:${SYNC_GH_TOKEN}@github.com/aunger01/aunger01.github.io.git" HEAD:master
+            exit 0
           fi
+          git commit -m "sync: 从 Rin 主站同步文章 $(date -u +%Y-%m-%d)"
+
+          # GitHub 偶发 5xx 会让一次推送白干（2026-11-04 Git Operations 故障即如此，
+          # 已抓好的图随 runner 一起销毁）。退避重试 6 次，总窗口约 5 分钟。
+          for i in 1 2 3 4 5 6; do
+            if git push "$REMOTE" HEAD:master; then
+              echo "push 成功（第 $i 次尝试）"
+              exit 0
+            fi
+            echo "::warning::push 第 $i 次失败，稍后重试"
+            sleep $((i * 15))
+            # 远端可能已被别处推进，先对齐再推，避免 non-fast-forward
+            if git fetch "$REMOTE" master --quiet 2>/dev/null; then
+              git rebase FETCH_HEAD --quiet || { git rebase --abort || true; }
+            fi
+          done
+          echo "::error::push 连续 6 次失败，疑似 GitHub 平台故障，请稍后手动重跑本工作流（同步是幂等的，可反复重跑）"
+          exit 1
